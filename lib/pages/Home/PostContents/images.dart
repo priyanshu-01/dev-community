@@ -9,7 +9,7 @@ class Images extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Image.network(
-        doc.data()['imgURL'],
+        doc.data()['images'],
         fit: BoxFit.cover,
       ),
     );

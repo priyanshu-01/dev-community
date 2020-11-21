@@ -27,7 +27,7 @@ class _PostState extends State<Post> with AutomaticKeepAliveClientMixin {
         TopSection(
           doc: widget.doc,
         ),
-        (widget.doc.data()['imgURL'] != null)
+        (widget.doc.data()['images'] != null)
             ? Images(
                 doc: widget.doc,
               )
