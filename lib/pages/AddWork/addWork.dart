@@ -93,7 +93,7 @@ class _AddWorkState extends State<AddWork> {
                   //   // profileImgURL = await tempSnapshot.ref.getDownloadURL();
                   // }
                   print(imgURL);
-                FirebaseFirestore.instance.collection('posts').add({
+                  FirebaseFirestore.instance.collection('posts').add({
                   'title': _title.text,
                   'description': _description.text,
                   'timestamp': Timestamp.now(),
