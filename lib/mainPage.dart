@@ -5,6 +5,7 @@ import 'package:dsc_projects/pages/Dashboard/dashboard.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
 import 'package:dsc_projects/pages/Search/search.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'firestore.dart';
 
 FirestoreFunctions firestore;
@@ -56,30 +57,37 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
           Flexible(
             flex: 10,
             child: Container(
-                // height: 20.0,
-                // color: Colors.red,
-                child: Image(
-              image: AssetImage('assets/images/logoname.png'),
-            )
-                // Column(
-                //   crossAxisAlignment: CrossAxisAlignment.end,
-                //   children: [
-                //     AutoSizeText(
-                //       'Developer Student Clubs',
-                //       style: TextStyle(color: Colors.black),
-                //       maxLines: 1,
-                //       maxFontSize: 15.0,
-                //     ),
-                //     AutoSizeText(
-                //       'Bharati Vidyapeeth University, Pune',
-                //       style: TextStyle(color: Color(0xff969696)),
-                //       maxLines: 1,
-                //       minFontSize: 9.0,
-                //       maxFontSize: 10.0,
-                //     )
-                //   ],
-                // ),
-                ),
+              // height: 20.0,
+              // color: Colors.red,
+              child:
+                  //      Image(
+                  //   image: AssetImage('assets/images/logoname.png'),
+                  // )
+                  AutoSizeText(
+                'DEV COMMUNITY',
+                style: GoogleFonts.raleway(color: Colors.black),
+                maxLines: 1,
+                maxFontSize: 15.0,
+              ),
+              // Column(
+              //   crossAxisAlignment: CrossAxisAlignment.end,
+              //   children: [
+              // AutoSizeText(
+              //   'Developer Student Clubs',
+              //   style: TextStyle(color: Colors.black),
+              //   maxLines: 1,
+              //   maxFontSize: 15.0,
+              // ),
+              //     AutoSizeText(
+              //       'Bharati Vidyapeeth University, Pune',
+              //       style: TextStyle(color: Color(0xff969696)),
+              //       maxLines: 1,
+              //       minFontSize: 9.0,
+              //       maxFontSize: 10.0,
+              //     )
+              //   ],
+              // ),
+            ),
           )
         ],
       ),

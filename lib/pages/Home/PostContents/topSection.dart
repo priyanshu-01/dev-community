@@ -36,10 +36,10 @@ class TopSection extends StatelessWidget {
                   )
                 ],
               ),
-              new IconButton(
-                icon: Icon(Icons.more_vert),
-                onPressed: null,
-              )
+              // new IconButton(
+              //   icon: Icon(Icons.more_vert),
+              //   onPressed: null,
+              // )
             ],
           ),
           Padding(
