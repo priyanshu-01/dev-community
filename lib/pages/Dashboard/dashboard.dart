@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dsc_projects/pages/Dashboard/posts.dart';
+import 'package:dsc_projects/pages/Home/post.dart';
 import 'package:flutter/material.dart';
+import 'package:dsc_projects/mainPage.dart';
+
+List postDocumentSnapshots = List();
 
 class Dashboard extends StatefulWidget {
   @override
@@ -8,6 +13,12 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   bool _postOpened = false;
+  @override
+  void initState() {
+    getPosts().whenComplete(() => setState(() {}));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -20,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
       child: Container(
           color: Colors.white,
           child: (!_postOpened)
-              ? ListView(children: <Widget>[
+              ? ListView(physics: BouncingScrollPhysics(), children: <Widget>[
                   Container(
                       color: Colors.white,
                       child: Column(
@@ -28,7 +39,8 @@ class _DashboardState extends State<Dashboard> {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(30, 20, 20, 10),
+                              padding:
+                                  const EdgeInsets.fromLTRB(30, 20, 20, 10),
                               child: Container(
                                   width: 100.0,
                                   height: 100.0,
@@ -37,30 +49,31 @@ class _DashboardState extends State<Dashboard> {
                                       image: new DecorationImage(
                                           fit: BoxFit.fill,
                                           image: NetworkImage(
-                                              "https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")))),
+                                              firestore.imageURL)))),
                             ),
                             Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.fromLTRB(25, 5, 0, 5),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(25, 5, 0, 5),
                                   child: Container(
                                       child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
-                                          Container(
-                                            child: Text('User Name',
+                                        Container(
+                                          child: Text(firestore.name,
                                               style: TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold,
                                               )),
-                                          ),
-                                          Divider(
-                                            color:Colors.black,
-                                            endIndent:70
-                                          ),
-                                          Container(
+                                        ),
+                                        Divider(
+                                            color: Colors.black, endIndent: 70),
+                                        Container(
                                             width: 300,
-                                            child: Text('This is my wonderful bio This is my wonderful bio This is my wonderful bio ')),
+                                            child: Text(
+                                                'This is my wonderful bio This is my wonderful bio This is my wonderful bio ')),
                                       ])),
                                 ),
                               ],
@@ -70,8 +83,7 @@ class _DashboardState extends State<Dashboard> {
                     padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
                     child: Container(
                         child: Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                           Text('Posts',
                               style: TextStyle(
@@ -80,29 +92,53 @@ class _DashboardState extends State<Dashboard> {
                         ])),
                   ),
                   Container(
-                    margin: EdgeInsets.all(8),
-                    child: GridView.count(
-                        crossAxisCount: 3,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        physics: NeverScrollableScrollPhysics(),
-                        children: List.generate(10, (index) {
-                          return Container(
-                              padding: EdgeInsets.all(4),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _postOpened = true;
-                                    });
-                                    // Navigator.of(context).push(MaterialPageRoute(
-                                    //     builder: (BuildContext context) => Posts()));
-                                  },
-                                  child: Image.network(
-                                      "https://images.pexels.com/photos/672657/pexels-photo-672657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")));
-                        })),
-                  )
+                      margin: EdgeInsets.all(8),
+                      child: (postDocumentSnapshots.isEmpty)
+                          ? NoPostsYet()
+                          : ListView.builder(
+                              // crossAxisCount: 3,
+                              addAutomaticKeepAlives: true,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: postDocumentSnapshots.length,
+                              itemBuilder: (context, int a) {
+                                return Container(
+                                    padding: EdgeInsets.all(4),
+                                    child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _postOpened = true;
+                                          });
+                                          // Navigator.of(context).push(MaterialPageRoute(
+                                          //     builder: (BuildContext context) => Posts()));
+                                        },
+                                        child:
+                                            Post(doc: postDocumentSnapshots[a])
+                                        // Image.network(
+                                        //     "https://images.pexels.com/photos/672657/pexels-photo-672657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+                                        ));
+                              })),
+                  // )
                 ])
               : Posts()),
+    );
+  }
+}
+
+Future<void> getPosts() async {
+  await FirebaseFirestore.instance
+      .collection('posts')
+      .where('uid', isEqualTo: firestore.uid)
+      .get()
+      .then((value) => {postDocumentSnapshots = value.docs});
+}
+
+class NoPostsYet extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('NO posts yet'),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dsc_projects/pages/loading.dart';
+import 'package:dsc_projects/services/authHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/mainPage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,7 +35,8 @@ class MyApp extends StatelessWidget {
           primaryTextTheme: TextTheme(
               bodyText1: TextStyle(color: Colors.black, fontFamily: "Aveny")),
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black))),
-      home: new MainPageWithAppBar(),
+      home: new AuthHandler(),
+      // home: Loading(),
     );
   }
 }

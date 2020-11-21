@@ -24,8 +24,7 @@ class TopSection extends StatelessWidget {
                       shape: BoxShape.circle,
                       image: new DecorationImage(
                           fit: BoxFit.fill,
-                          image: new NetworkImage(
-                              "https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")),
+                          image: new NetworkImage(doc.data()['myImageURL'])),
                     ),
                   ),
                   new SizedBox(
@@ -37,10 +36,10 @@ class TopSection extends StatelessWidget {
                   )
                 ],
               ),
-              new IconButton(
-                icon: Icon(Icons.more_vert),
-                onPressed: null,
-              )
+              // new IconButton(
+              //   icon: Icon(Icons.more_vert),
+              //   onPressed: null,
+              // )
             ],
           ),
           Padding(
