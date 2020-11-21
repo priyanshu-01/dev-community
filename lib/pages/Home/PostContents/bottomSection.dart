@@ -25,6 +25,7 @@ class _BottomSectionState extends State<BottomSection> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
+                    // color: Colors.blue,
                     // height: 20.0,
                     // width: 20.0,
                     child: Stack(
@@ -89,6 +90,7 @@ class NotLiked extends StatelessWidget {
     return IconButton(
       icon: new Icon(FontAwesomeIcons.heart),
       color: Colors.red,
+      iconSize: 20.0,
       onPressed: () {},
     );
   }
@@ -100,6 +102,28 @@ class Liked extends StatefulWidget {
 }
 
 class _LikedState extends State<Liked> with TickerProviderStateMixin {
+  double iconSize;
+  AnimationController _controller;
+  CurvedAnimation _curvedAnimation;
+  @override
+  void initState() {
+    iconSize = 0.0;
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 400),
+        lowerBound: 0.0,
+        upperBound: 1.0);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // setState(() {
+      //   iconSize = 20.0;
+      // });
+      _controller.forward();
+    });
+    _curvedAnimation =
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return
@@ -109,16 +133,16 @@ class _LikedState extends State<Liked> with TickerProviderStateMixin {
         //   iconSize: 20.0,
         //   onPressed: () {},
         // );
-        AnimatedSize(
-      duration: Duration(milliseconds: 1000),
-      vsync: this,
-      curve: Curves.bounceInOut, alignment: Alignment.center,
-      child: IconButton(
-        icon: new Icon(FontAwesomeIcons.solidHeart),
-        color: Colors.red,
-        iconSize: 20.0,
-        onPressed: () {},
-      ),
+        AnimatedBuilder(
+      animation: _curvedAnimation,
+      builder: (context, child) {
+        return IconButton(
+          icon: new Icon(FontAwesomeIcons.solidHeart),
+          color: Colors.red,
+          iconSize: _curvedAnimation.value * 20.0,
+          onPressed: () {},
+        );
+      },
       //     Container(
       //   // height: 20.0,
       //   // width: 20.0,
