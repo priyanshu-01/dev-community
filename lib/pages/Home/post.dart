@@ -12,7 +12,10 @@ class Post extends StatefulWidget {
   _PostState createState() => _PostState();
 }
 
-class _PostState extends State<Post> {
+class _PostState extends State<Post> with AutomaticKeepAliveClientMixin {
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
     // var deviceSize = MediaQuery.of(context).size;
@@ -24,9 +27,11 @@ class _PostState extends State<Post> {
         TopSection(
           doc: widget.doc,
         ),
-        Images(
-          doc: widget.doc,
-        ),
+        (widget.doc.data()['imgURL'] != null)
+            ? Images(
+                doc: widget.doc,
+              )
+            : Container(),
         BottomSection(
           doc: widget.doc,
         ),

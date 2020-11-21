@@ -7,7 +7,7 @@ import 'package:dsc_projects/pages/Search/search.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'firestore.dart';
 
-Firestore firestore;
+FirestoreFunctions firestore;
 CommonFunctions commonFunctions;
 
 GlobalKey pageKey = GlobalKey();
@@ -30,7 +30,7 @@ class MainPageWithAppBar extends StatefulWidget {
 class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   @override
   void initState() {
-    firestore = new Firestore();
+    // firestore = new Firestore();
     commonFunctions = new CommonFunctions();
     super.initState();
   }

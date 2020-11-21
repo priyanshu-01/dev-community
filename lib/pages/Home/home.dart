@@ -23,6 +23,7 @@ class HomePage extends StatelessWidget {
             );
           else
             return ListView.builder(
+              addAutomaticKeepAlives: true,
               physics: BouncingScrollPhysics(),
               itemCount: snapshot.data.docs.length,
               itemBuilder: (context, index) {
