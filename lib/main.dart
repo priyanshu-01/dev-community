@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dsc_projects/pages/loading.dart';
 import 'package:dsc_projects/services/authHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/mainPage.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
               bodyText1: TextStyle(color: Colors.black, fontFamily: "Aveny")),
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black))),
       home: new AuthHandler(),
+      // home: Loading(),
     );
   }
 }

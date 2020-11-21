@@ -17,6 +17,7 @@ dependencies:
   google_sign_in: ^4.4.3
   image_picker: ^0.6.7+14
   firebase_storage: any
+  flutter_spinkit: ^4.1.2+1
 
 
 dev_dependencies:

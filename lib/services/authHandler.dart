@@ -1,5 +1,6 @@
 import 'package:dsc_projects/mainPage.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
+import 'package:dsc_projects/pages/loading.dart';
 import 'package:dsc_projects/services/anon.dart';
 import 'package:dsc_projects/services/authService.dart';
 import 'package:flutter/material.dart';
@@ -102,16 +103,6 @@ Widget fetchFutureGoogle() {
       }
     },
   );
-}
-
-class Loading extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-      child: Text('loading'),
-    ));
-  }
 }
 
 class LoginPage extends StatelessWidget {

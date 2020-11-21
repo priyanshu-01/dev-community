@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dsc_projects/pages/Home/post.dart';
+import 'package:dsc_projects/pages/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/pages/Home/feed.dart';
 
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null)
             return Container(
-              child: Text('Loading'),
+              child: Loading(),
             );
           else
             return ListView.builder(
