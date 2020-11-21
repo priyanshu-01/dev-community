@@ -1,9 +1,14 @@
+import 'package:dsc_projects/commonFunctions.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/pages/AddWork/addWork.dart';
 import 'package:dsc_projects/pages/Dashboard/dashboard.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
 import 'package:dsc_projects/pages/Search/search.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'firestore.dart';
+
+Firestore firestore;
+CommonFunctions commonFunctions;
 
 GlobalKey pageKey = GlobalKey();
 enum pages { HomePage, Search, AddWork, Dashboard }
@@ -24,6 +29,13 @@ class MainPageWithAppBar extends StatefulWidget {
 
 class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   @override
+  void initState() {
+    firestore = new Firestore();
+    commonFunctions = new CommonFunctions();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var topBar = new AppBar(
       backgroundColor: Colors.white,
@@ -37,34 +49,37 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
             child: Container(
                 width: 40,
                 height: 40,
-                child: Image(image: AssetImage('assets/images/logo.png'),
+                child: Image(
+                  image: AssetImage('assets/images/logo.png'),
                 )),
           ),
           Flexible(
             flex: 10,
             child: Container(
-              // height: 20.0,
-              // color: Colors.red,
-              child: Image(image: AssetImage('assets/images/logoname.png'),)
-              // Column(
-              //   crossAxisAlignment: CrossAxisAlignment.end,
-              //   children: [
-              //     AutoSizeText(
-              //       'Developer Student Clubs',
-              //       style: TextStyle(color: Colors.black),
-              //       maxLines: 1,
-              //       maxFontSize: 15.0,
-              //     ),
-              //     AutoSizeText(
-              //       'Bharati Vidyapeeth University, Pune',
-              //       style: TextStyle(color: Color(0xff969696)),
-              //       maxLines: 1,
-              //       minFontSize: 9.0,
-              //       maxFontSize: 10.0,
-              //     )
-              //   ],
-              // ),
-            ),
+                // height: 20.0,
+                // color: Colors.red,
+                child: Image(
+              image: AssetImage('assets/images/logoname.png'),
+            )
+                // Column(
+                //   crossAxisAlignment: CrossAxisAlignment.end,
+                //   children: [
+                //     AutoSizeText(
+                //       'Developer Student Clubs',
+                //       style: TextStyle(color: Colors.black),
+                //       maxLines: 1,
+                //       maxFontSize: 15.0,
+                //     ),
+                //     AutoSizeText(
+                //       'Bharati Vidyapeeth University, Pune',
+                //       style: TextStyle(color: Color(0xff969696)),
+                //       maxLines: 1,
+                //       minFontSize: 9.0,
+                //       maxFontSize: 10.0,
+                //     )
+                //   ],
+                // ),
+                ),
           )
         ],
       ),
@@ -96,19 +111,19 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                     });
                   },
                 ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.search,
-                  ),
-                  color: (currentPage == pages.Search)
-                      ? Colors.blue
-                      : Colors.white,
-                  onPressed: () {
-                    pageKey.currentState.setState(() {
-                      currentPage = pages.Search;
-                    });
-                  },
-                ),
+                // new IconButton(
+                //   icon: Icon(
+                //     Icons.search,
+                //   ),
+                //   color: (currentPage == pages.Search)
+                //       ? Colors.blue
+                //       : Colors.white,
+                //   onPressed: () {
+                //     pageKey.currentState.setState(() {
+                //       currentPage = pages.Search;
+                //     });
+                //   },
+                // ),
                 new IconButton(
                   icon: Icon(
                     Icons.add_box,

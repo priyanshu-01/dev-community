@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TopSection extends StatelessWidget {
+  final doc;
+  TopSection({this.doc});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -29,7 +32,7 @@ class TopSection extends StatelessWidget {
                     width: 10.0,
                   ),
                   new Text(
-                    "Full Name",
+                    doc.data()['name'],
                     style: GoogleFonts.roboto(fontWeight: FontWeight.w700),
                   )
                 ],
@@ -50,11 +53,12 @@ class TopSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'The DSC app',
+                    doc.data()['title'],
                     style: GoogleFonts.roboto(fontWeight: FontWeight.w500),
                   ),
-                  Text(
-                      'Made mobile and web for DSC members to showcase their work and achievements to the team')
+                  Text(doc.data()['description']
+                      // 'Made mobile and web for DSC members to showcase their work and achievements to the team'
+                      )
                 ],
               ),
             ),

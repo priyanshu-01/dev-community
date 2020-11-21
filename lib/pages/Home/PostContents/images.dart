@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Images extends StatelessWidget {
+  final doc;
+  Images({this.doc});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
