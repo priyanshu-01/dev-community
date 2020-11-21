@@ -14,7 +14,7 @@ class AddWork extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
+                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
               child: TextField(
                 controller: _title,
                 decoration: InputDecoration(hintText: 'Title'),
@@ -22,7 +22,7 @@ class AddWork extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
+                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
               child: TextField(
                 controller: _description,
                 decoration: InputDecoration(hintText: 'Description'),
