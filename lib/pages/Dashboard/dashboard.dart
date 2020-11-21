@@ -1,3 +1,4 @@
+import 'package:dsc_projects/pages/Dashboard/posts.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
@@ -82,7 +83,12 @@ class Dashboard extends StatelessWidget {
                     children: List.generate(10, (index){
                       return Container(
                         padding: EdgeInsets.all(4),
-                        child: Image.network("https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => Posts()));
+                          },
+                          child: Image.network("https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")
+                          )
                       );
                     })
                   ),
