@@ -37,34 +37,37 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
             child: Container(
                 width: 40,
                 height: 40,
-                child: Image(image: AssetImage('assets/images/logo.png'),
+                child: Image(
+                  image: AssetImage('assets/images/logo.png'),
                 )),
           ),
           Flexible(
             flex: 10,
             child: Container(
-              // height: 20.0,
-              // color: Colors.red,
-              child: Image(image: AssetImage('assets/images/logoname.png'),)
-              // Column(
-              //   crossAxisAlignment: CrossAxisAlignment.end,
-              //   children: [
-              //     AutoSizeText(
-              //       'Developer Student Clubs',
-              //       style: TextStyle(color: Colors.black),
-              //       maxLines: 1,
-              //       maxFontSize: 15.0,
-              //     ),
-              //     AutoSizeText(
-              //       'Bharati Vidyapeeth University, Pune',
-              //       style: TextStyle(color: Color(0xff969696)),
-              //       maxLines: 1,
-              //       minFontSize: 9.0,
-              //       maxFontSize: 10.0,
-              //     )
-              //   ],
-              // ),
-            ),
+                // height: 20.0,
+                // color: Colors.red,
+                child: Image(
+              image: AssetImage('assets/images/logoname.png'),
+            )
+                // Column(
+                //   crossAxisAlignment: CrossAxisAlignment.end,
+                //   children: [
+                //     AutoSizeText(
+                //       'Developer Student Clubs',
+                //       style: TextStyle(color: Colors.black),
+                //       maxLines: 1,
+                //       maxFontSize: 15.0,
+                //     ),
+                //     AutoSizeText(
+                //       'Bharati Vidyapeeth University, Pune',
+                //       style: TextStyle(color: Color(0xff969696)),
+                //       maxLines: 1,
+                //       minFontSize: 9.0,
+                //       maxFontSize: 10.0,
+                //     )
+                //   ],
+                // ),
+                ),
           )
         ],
       ),
@@ -96,19 +99,19 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                     });
                   },
                 ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.search,
-                  ),
-                  color: (currentPage == pages.Search)
-                      ? Colors.blue
-                      : Colors.white,
-                  onPressed: () {
-                    pageKey.currentState.setState(() {
-                      currentPage = pages.Search;
-                    });
-                  },
-                ),
+                // new IconButton(
+                //   icon: Icon(
+                //     Icons.search,
+                //   ),
+                //   color: (currentPage == pages.Search)
+                //       ? Colors.blue
+                //       : Colors.white,
+                //   onPressed: () {
+                //     pageKey.currentState.setState(() {
+                //       currentPage = pages.Search;
+                //     });
+                //   },
+                // ),
                 new IconButton(
                   icon: Icon(
                     Icons.add_box,

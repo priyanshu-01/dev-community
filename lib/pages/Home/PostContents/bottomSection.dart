@@ -19,30 +19,41 @@ class _BottomSectionState extends State<BottomSection> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    // color: Colors.blue,
-                    // height: 20.0,
-                    // width: 20.0,
+                    color: Colors.yellow,
                     child: Stack(
                       children: [
                         isPressed ? Liked() : NotLiked(),
-                        new InkWell(
-                          // child: isPressed ? Liked() : NotLiked(),
-                          child: Container(
-                            height: 40.0,
-                            width: 40.0,
-                            // color: Colors.amber,
-                          ),
-                          onTap: () {
-                            setState(() {
-                              isPressed = !isPressed;
-                            });
-                          },
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              child: new InkWell(
+                                child: Container(
+                                  height: 40.0,
+                                  width: 40.0,
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    isPressed = !isPressed;
+                                  });
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 0.0,
+                            ),
+                            Container(
+                              child: Text(
+                                '15',
+                                style: TextStyle(fontSize: 10.0),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -55,7 +66,6 @@ class _BottomSectionState extends State<BottomSection> {
               ),
               new Icon(
                 FontAwesomeIcons.infoCircle,
-                // color: Colors.yellow[600],
               )
             ],
           ),
@@ -114,9 +124,6 @@ class _LikedState extends State<Liked> with TickerProviderStateMixin {
         lowerBound: 0.0,
         upperBound: 1.0);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // setState(() {
-      //   iconSize = 20.0;
-      // });
       _controller.forward();
     });
     _curvedAnimation =
@@ -126,14 +133,7 @@ class _LikedState extends State<Liked> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // IconButton(
-        //   icon: new Icon(FontAwesomeIcons.solidHeart),
-        //   color: Colors.red,
-        //   iconSize: 20.0,
-        //   onPressed: () {},
-        // );
-        AnimatedBuilder(
+    return AnimatedBuilder(
       animation: _curvedAnimation,
       builder: (context, child) {
         return IconButton(
@@ -143,11 +143,6 @@ class _LikedState extends State<Liked> with TickerProviderStateMixin {
           onPressed: () {},
         );
       },
-      //     Container(
-      //   // height: 20.0,
-      //   // width: 20.0,
-      //   color: Colors.yellow,
-      // )
     );
   }
 }
