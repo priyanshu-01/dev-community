@@ -75,8 +75,7 @@ class _AddWorkState extends State<AddWork> {
                 _title.clear();
                 _description.clear();
                 var profileImgURL;
-                  var firebaseStorageRef =
-                  FirebaseStorage.instance.ref().child("team");
+                  var firebaseStorageRef =FirebaseStorage.instance.ref().child("team");
                   if (_image != null) {
                     var eventImgRef = firebaseStorageRef.child(name);
                     StorageUploadTask imgUpload =
