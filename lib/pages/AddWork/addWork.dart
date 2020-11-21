@@ -1,9 +1,30 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 
-class AddWork extends StatelessWidget {
+class AddWork extends StatefulWidget {
+  @override
+  _AddWorkState createState() => _AddWorkState();
+}
+
+class _AddWorkState extends State<AddWork> {
   final TextEditingController _title = TextEditingController();
   final TextEditingController _description = TextEditingController();
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +48,23 @@ class AddWork extends StatelessWidget {
                 controller: _description,
                 decoration: InputDecoration(hintText: 'Description'),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 200,
+                height: 200,
+                color: Colors.grey[200],
+                child: Center(
+                  child: _image == null
+                      ? Text('No image selected.')
+                      : Image.file(_image),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(icon: Icon(Icons.add_a_photo), onPressed: getImage,iconSize: 40,),
             ),
             RaisedButton(
               color: Colors.white,
