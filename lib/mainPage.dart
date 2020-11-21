@@ -26,40 +26,44 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   @override
   Widget build(BuildContext context) {
     var topBar = new AppBar(
-      backgroundColor: new Color(0xfff8faf8),
+      backgroundColor: Colors.white,
       // centerTitle: true,
-      elevation: 1.0,
+      elevation: 2.0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Flexible(
             flex: 2,
             child: Container(
-                child: Image(image: AssetImage('assets/images/dsclogo.png'))),
+                width: 40,
+                height: 40,
+                child: Image(image: AssetImage('assets/images/logo.png'),
+                )),
           ),
           Flexible(
             flex: 10,
             child: Container(
               // height: 20.0,
               // color: Colors.red,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  AutoSizeText(
-                    'Developer Student Clubs',
-                    style: TextStyle(color: Colors.black),
-                    maxLines: 1,
-                    maxFontSize: 15.0,
-                  ),
-                  AutoSizeText(
-                    'Bharati Vidyapeeth University, Pune',
-                    style: TextStyle(color: Color(0xff969696)),
-                    maxLines: 1,
-                    minFontSize: 9.0,
-                    maxFontSize: 10.0,
-                  )
-                ],
-              ),
+              child: Image(image: AssetImage('assets/images/logoname.png'),)
+              // Column(
+              //   crossAxisAlignment: CrossAxisAlignment.end,
+              //   children: [
+              //     AutoSizeText(
+              //       'Developer Student Clubs',
+              //       style: TextStyle(color: Colors.black),
+              //       maxLines: 1,
+              //       maxFontSize: 15.0,
+              //     ),
+              //     AutoSizeText(
+              //       'Bharati Vidyapeeth University, Pune',
+              //       style: TextStyle(color: Color(0xff969696)),
+              //       maxLines: 1,
+              //       minFontSize: 9.0,
+              //       maxFontSize: 10.0,
+              //     )
+              //   ],
+              // ),
             ),
           )
         ],
