@@ -1,9 +1,14 @@
+import 'package:dsc_projects/commonFunctions.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/pages/AddWork/addWork.dart';
 import 'package:dsc_projects/pages/Dashboard/dashboard.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
 import 'package:dsc_projects/pages/Search/search.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'firestore.dart';
+
+Firestore firestore;
+CommonFunctions commonFunctions;
 
 GlobalKey pageKey = GlobalKey();
 enum pages { HomePage, Search, AddWork, Dashboard }
@@ -23,6 +28,13 @@ class MainPageWithAppBar extends StatefulWidget {
 }
 
 class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
+  @override
+  void initState() {
+    firestore = new Firestore();
+    commonFunctions = new CommonFunctions();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var topBar = new AppBar(

@@ -10,27 +10,29 @@ class HomePage extends StatelessWidget {
       color: Colors.white,
       //  child: Post()
 
-      // child: FutureBuilder<QuerySnapshot>(
-      //   future: FirebaseFirestore.instance
-      //       .collection('posts')
-      //       .orderBy('timestamp', descending: true)
-      //       .get(),
-      //   builder: (context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.waiting ||
-      //         snapshot.data == null)
-      //       return Container(
-      //         child: Text('Loading'),
-      //       );
-      //     else
-      //       return ListView.builder(
-      //         itemCount: snapshot.data.docs.length,
-      //         itemBuilder: (context, index) {
-      //           return Text(snapshot.data.docs[index].data()['title']);
-      //         },
-      //       );
-      //   },
-      // ),
-      child: Post(),
+      child: FutureBuilder<QuerySnapshot>(
+        future: FirebaseFirestore.instance
+            .collection('posts')
+            .orderBy('timestamp', descending: true)
+            .get(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting ||
+              snapshot.data == null)
+            return Container(
+              child: Text('Loading'),
+            );
+          else
+            return ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: snapshot.data.docs.length,
+              itemBuilder: (context, index) {
+                return Post(doc: snapshot.data.docs[index]);
+                // Text(snapshot.data.docs[index].data()['title']);
+              },
+            );
+        },
+      ),
+      // child: Post(),
     );
   }
 }

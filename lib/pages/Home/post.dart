@@ -6,6 +6,8 @@ import 'PostContents/bottomSection.dart';
 import 'PostContents/topSection.dart';
 
 class Post extends StatefulWidget {
+  final doc;
+  Post({this.doc});
   @override
   _PostState createState() => _PostState();
 }
@@ -19,9 +21,15 @@ class _PostState extends State<Post> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        TopSection(),
-        Images(),
-        BottomSection(),
+        TopSection(
+          doc: widget.doc,
+        ),
+        Images(
+          doc: widget.doc,
+        ),
+        BottomSection(
+          doc: widget.doc,
+        ),
       ],
     );
   }

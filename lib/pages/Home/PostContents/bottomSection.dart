@@ -1,17 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:dsc_projects/mainPage.dart';
 
 class BottomSection extends StatefulWidget {
+  final doc;
+  BottomSection({this.doc});
+
   @override
   _BottomSectionState createState() => _BottomSectionState();
 }
 
 class _BottomSectionState extends State<BottomSection> {
-  bool isPressed = false;
+  bool isLiked = false;
 
   @override
   Widget build(BuildContext context) {
+    Timestamp ts = widget.doc.data()['timestamp'];
+    var d = DateTime.now();
+    print(' and $ts');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,47 +29,53 @@ class _BottomSectionState extends State<BottomSection> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               new Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    color: Colors.yellow,
                     child: Stack(
                       children: [
-                        isPressed ? Liked() : NotLiked(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: new InkWell(
-                                child: Container(
-                                  height: 40.0,
-                                  width: 40.0,
+                        isLiked ? Liked() : NotLiked(),
+                        Positioned(
+                          left: 1.0,
+                          right: 1.0,
+                          bottom: 0.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: new InkWell(
+                                  child: Container(
+                                    height: 40.0,
+                                    width: 40.0,
+                                  ),
+                                  onTap: () {
+                                    setState(() {
+                                      isLiked = !isLiked;
+                                      if (isLiked)
+                                        firestore.likePost(widget.doc);
+                                      else {
+                                        firestore.unlikePost(widget.doc);
+                                      }
+                                    });
+                                  },
                                 ),
-                                onTap: () {
-                                  setState(() {
-                                    isPressed = !isPressed;
-                                  });
-                                },
                               ),
-                            ),
-                            SizedBox(
-                              height: 0.0,
-                            ),
-                            Container(
-                              child: Text(
-                                '15',
-                                style: TextStyle(fontSize: 10.0),
+                              Container(
+                                child: Text(
+                                  (widget.doc.data()['likes'] != null)
+                                      ? widget.doc
+                                          .data()['likes']
+                                          .length
+                                          .toString()
+                                      : '0',
+                                  style: TextStyle(fontSize: 10.0),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  new SizedBox(
-                    width: 12.0,
-                  ),
-                  NotVerified()
                 ],
               ),
               new Icon(
@@ -97,11 +111,14 @@ class NotVerified extends StatelessWidget {
 class NotLiked extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: new Icon(FontAwesomeIcons.heart),
-      color: Colors.red,
-      iconSize: 20.0,
-      onPressed: () {},
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6.0),
+      child: IconButton(
+        icon: new Icon(FontAwesomeIcons.heart),
+        color: Colors.red,
+        iconSize: 20.0,
+        onPressed: () {},
+      ),
     );
   }
 }
@@ -136,11 +153,14 @@ class _LikedState extends State<Liked> with TickerProviderStateMixin {
     return AnimatedBuilder(
       animation: _curvedAnimation,
       builder: (context, child) {
-        return IconButton(
-          icon: new Icon(FontAwesomeIcons.solidHeart),
-          color: Colors.red,
-          iconSize: _curvedAnimation.value * 20.0,
-          onPressed: () {},
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 6.0),
+          child: IconButton(
+            icon: new Icon(FontAwesomeIcons.solidHeart),
+            color: Colors.red,
+            iconSize: _curvedAnimation.value * 20.0,
+            onPressed: () {},
+          ),
         );
       },
     );
