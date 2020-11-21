@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
@@ -32,7 +32,7 @@ class _AddWorkState extends State<AddWork> {
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.pink,
-      child: Center(
+      child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Padding(
@@ -40,7 +40,7 @@ class _AddWorkState extends State<AddWork> {
                   const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
               child: TextField(
                 controller: _title,
-                decoration: InputDecoration(hintText: 'Title'),
+                decoration: InputDecoration(hintText: 'Title',),
               ),
             ),
             Padding(
@@ -71,26 +71,38 @@ class _AddWorkState extends State<AddWork> {
             RaisedButton(
               color: Colors.white,
               child: Text('Post'),
-              onPressed: () async {
-                _title.clear();
-                _description.clear();
-                var profileImgURL;
-                  var firebaseStorageRef =FirebaseStorage.instance.ref().child("team");
-                  if (_image != null) {
-                    var eventImgRef = firebaseStorageRef.child(name);
-                    StorageUploadTask imgUpload =
-                        eventImgRef.putFile(_image);
-                    StorageTaskSnapshot tempSnapshot =
-                        await imgUpload.onComplete;
-                    profileImgURL = await tempSnapshot.ref.getDownloadURL();
+              onPressed: () async {            
+                  var name=_title.text;
+                  String imgURL;
+                  // var firebaseStorageRef =FirebaseStorage.instance.ref().child("team").putFile(_image);
+                  if(_image!=null){
+                  try{  
+                  firebase_storage.UploadTask task= firebase_storage.FirebaseStorage.instance.ref('uploads/$name').putFile(_image);
+                  firebase_storage.TaskSnapshot snapshot = await task;
+                  imgURL=await snapshot.ref.getDownloadURL();
                   }
-                  print(profileImgURL);
+                  catch (e){
+                    print(e);
+                  }
+                  }
+
+                  // if (_image != null) {
+                  //   var eventImgRef = firebaseStorageRef.child(name);
+                  //   var imgUpload = eventImgRef.putFile(_image);
+                  //   // var tempSnapshot = await imgUpload.onComplete;
+                  //   // profileImgURL = await tempSnapshot.ref.getDownloadURL();
+                  // }
+                  print(imgURL);
                 FirebaseFirestore.instance.collection('posts').add({
                   'title': _title.text,
                   'description': _description.text,
                   'timestamp': Timestamp.now(),
-                  'name': 'username'
+                  'name': 'username',
+                  'imgURL': imgURL
                 });
+                 _title.clear();
+                _description.clear();
+              
               },
             )
           ],
