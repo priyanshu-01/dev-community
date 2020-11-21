@@ -22,14 +22,13 @@ class _DashboardState extends State<Dashboard> {
           child: (!_postOpened)
               ? ListView(children: <Widget>[
                   Container(
-                      width: 600,
                       color: Colors.white,
                       child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
+                              padding: const EdgeInsets.fromLTRB(30, 20, 20, 10),
                               child: Container(
                                   width: 100.0,
                                   height: 100.0,
@@ -40,53 +39,46 @@ class _DashboardState extends State<Dashboard> {
                                           image: NetworkImage(
                                               "https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")))),
                             ),
-                            Container(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                  Text('User ID',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                                  IconButton(icon: Icon(Icons.edit))
-                                ])),
-                            Container(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                  Text('User Name',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                                  IconButton(icon: Icon(Icons.edit))
-                                ])),
-                            Container(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                  Text('User Email',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                                  IconButton(icon: Icon(Icons.edit))
-                                ])),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 15, 0, 5),
-                              child: Container(
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                    Text('Posts',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                        )),
-                                  ])),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(25, 5, 0, 5),
+                                  child: Container(
+                                      child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                          Container(
+                                            child: Text('User Name',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              )),
+                                          ),
+                                          Divider(
+                                            color:Colors.black,
+                                            endIndent:70
+                                          ),
+                                          Container(
+                                            width: 300,
+                                            child: Text('This is my wonderful bio This is my wonderful bio This is my wonderful bio ')),
+                                      ])),
+                                ),
+                              ],
                             ),
                           ])),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                    child: Container(
+                        child: Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.center,
+                            children: <Widget>[
+                          Text('Posts',
+                              style: TextStyle(
+                                fontSize: 20,
+                              )),
+                        ])),
+                  ),
                   Container(
                     margin: EdgeInsets.all(8),
                     child: GridView.count(
@@ -106,7 +98,7 @@ class _DashboardState extends State<Dashboard> {
                                     //     builder: (BuildContext context) => Posts()));
                                   },
                                   child: Image.network(
-                                      "https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")));
+                                      "https://images.pexels.com/photos/672657/pexels-photo-672657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")));
                         })),
                   )
                 ])
