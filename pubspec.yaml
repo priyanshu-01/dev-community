@@ -10,11 +10,12 @@ dependencies:
   cupertino_icons: ^0.1.2
   font_awesome_flutter:
   cloud_firestore: ^0.14.0
-  firebase_core: ^0.5.0
+  firebase_core: ^0.5.2
   google_fonts: ^0.3.9
   firebase_auth: ^0.18.0
   auto_size_text: ^2.1.0
   image_picker: ^0.6.7+14
+  firebase_storage: ^5.0.1
 
 
 dev_dependencies:

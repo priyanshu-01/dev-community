@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,6 +14,7 @@ class _AddWorkState extends State<AddWork> {
   final TextEditingController _description = TextEditingController();
   File _image;
   final picker = ImagePicker();
+  String name = '';
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -69,9 +71,21 @@ class _AddWorkState extends State<AddWork> {
             RaisedButton(
               color: Colors.white,
               child: Text('Post'),
-              onPressed: () {
+              onPressed: () async {
                 _title.clear();
                 _description.clear();
+                var profileImgURL;
+                  var firebaseStorageRef =
+                  FirebaseStorage.instance.ref().child("team");
+                  if (_image != null) {
+                    var eventImgRef = firebaseStorageRef.child(name);
+                    StorageUploadTask imgUpload =
+                        eventImgRef.putFile(_image);
+                    StorageTaskSnapshot tempSnapshot =
+                        await imgUpload.onComplete;
+                    profileImgURL = await tempSnapshot.ref.getDownloadURL();
+                  }
+                  print(profileImgURL);
                 FirebaseFirestore.instance.collection('posts').add({
                   'title': _title.text,
                   'description': _description.text,
