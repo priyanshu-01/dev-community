@@ -29,15 +29,10 @@ class _BottomSectionState extends State<BottomSection> {
     }
   }
 
-
-
-
-  
-
   @override
   Widget build(BuildContext context) {
     DateTime ts = widget.doc.data()['timestamp'].toDate();
-    String time=DateFormat.yMMMd().add_jm().format(ts).toString();
+    String time = DateFormat.yMMMd().add_jm().format(ts).toString();
     var d = DateTime.now();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,5 +175,11 @@ class _LikedState extends State<Liked> with TickerProviderStateMixin {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

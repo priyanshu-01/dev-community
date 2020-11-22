@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dsc_projects/services/authHandler.dart';
 
 class FirestoreFunctions {
   String name;
@@ -19,5 +20,12 @@ class FirestoreFunctions {
         .collection('posts')
         .doc(doc.id)
         .update({'likes.$uid': null});
+  }
+
+  addBio(String bio) async {
+    await FirebaseFirestore.instance
+        .collection('users google')
+        .doc(userFirebaseDocumentId)
+        .update({'bio': bio});
   }
 }
