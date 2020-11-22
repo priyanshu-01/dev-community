@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
               bodyText1: TextStyle(color: Colors.black, fontFamily: "Aveny")),
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black))),
       home: new AuthHandler(),
-      // home: Loading(),
     );
   }
 }

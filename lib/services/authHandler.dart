@@ -1,4 +1,5 @@
 import 'package:dsc_projects/mainPage.dart';
+import 'package:dsc_projects/pages/Dashboard/bio.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
 import 'package:dsc_projects/pages/loading.dart';
 import 'package:dsc_projects/services/anon.dart';
@@ -7,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../firestore.dart';
 
 String name, email, imageUrl, uid;
@@ -111,11 +115,34 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          child: RaisedButton(
-            child: Text('login'),
-            onPressed: () {
-              GoogleAuthentication().signInWithGoogle();
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:<Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image(image: AssetImage('assets/images/logo.png')),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                child: Container(
+                child: Text(
+                  'DEV COMMUNITY',
+                  style: GoogleFonts.raleway(color: Colors.black,fontSize: 30),
+                  maxLines: 1,
+                ),
+            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 35, 20, 0),
+                child: SignInButton(
+                 Buttons.Google,
+                  text: "Sign up with Google",
+                   onPressed: () {
+                     GoogleAuthentication().signInWithGoogle();
+                   },
+                  ),
+              )
+            ]
           ),
         ),
       ),

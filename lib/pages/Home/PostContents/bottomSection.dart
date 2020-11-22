@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:dsc_projects/mainPage.dart';
+import 'package:intl/intl.dart';
 
 class BottomSection extends StatefulWidget {
   final doc;
@@ -28,11 +29,16 @@ class _BottomSectionState extends State<BottomSection> {
     }
   }
 
+
+
+
+  
+
   @override
   Widget build(BuildContext context) {
-    Timestamp ts = widget.doc.data()['timestamp'];
+    DateTime ts = widget.doc.data()['timestamp'].toDate();
+    String time=DateFormat.yMMMd().add_jm().format(ts).toString();
     var d = DateTime.now();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -96,7 +102,7 @@ class _BottomSectionState extends State<BottomSection> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(22.0, 5.0, 0.0, 0.0),
-          child: Text("26 March , 2020",
+          child: Text(time,
               style: GoogleFonts.roboto(
                   color: Colors.grey[500],
                   fontSize: 10.0,
