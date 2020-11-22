@@ -18,7 +18,7 @@ class _AddWorkState extends State<AddWork> {
   String name = '';
 
   Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.getImage(source: ImageSource.gallery,imageQuality: 25);
 
     setState(() {
       if (pickedFile != null) {

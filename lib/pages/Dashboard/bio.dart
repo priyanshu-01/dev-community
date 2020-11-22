@@ -13,7 +13,7 @@ class Bio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        color: Colors.grey[900],
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -21,21 +21,19 @@ class Bio extends StatelessWidget {
                   flex: 2,
                   child: Container(
                     child: Image(
-                      image: AssetImage('assets/images/logo.png'),
+                      image: AssetImage('assets/images/applogo.png'),height: 60,color: Colors.white,
                     ),
                   )),
               Flexible(flex: 1, child: Container()),
               Flexible(
                 flex: 3,
                 child: Container(
-                  child: Text(
-                    'DEV COMMUNITY',
-                    style:
-                        GoogleFonts.raleway(color: Colors.black, fontSize: 25),
+                  child: Image(
+                    image: AssetImage('assets/images/appname.png'),height: 25,color: Colors.white,
                   ),
                 ),
               ),
-              Flexible(flex: 3, child: Container()),
+              Flexible(flex: 2, child: Container()),
               Flexible(
                 flex: 2,
                 child: Padding(
@@ -45,15 +43,22 @@ class Bio extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(firestore.imageURL),
+                        Container(
+                              width: 60.0,
+                              height: 60.0,
+                              decoration: new BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: new DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image:
+                                          NetworkImage(firestore.imageURL,)))
                         ),
                         SizedBox(
                           width: 20.0,
                         ),
                         Text(
                           firestore.name,
-                          style: GoogleFonts.ubuntu(fontSize: 20.0),
+                          style: GoogleFonts.ubuntu(fontSize: 20.0,color: Colors.white),
                         ),
                         SizedBox(
                           width: 20.0,
@@ -70,8 +75,9 @@ class Bio extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Container(
                     child: TextField(
+                      style: TextStyle(color:Colors.white),
                       controller: userbio,
-                      decoration: InputDecoration(hintText: 'Add You Bio'),
+                      decoration: InputDecoration(hintText: 'Add You Bio',hintStyle: TextStyle(color: Colors.grey[500])),
                     ),
                   ),
                 ),
@@ -116,7 +122,7 @@ class _MyNextButtonState extends State<MyNextButton> {
         child: (!_loading)
             ? Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0, vertical: 10.0),
+                    horizontal: 25.0, vertical: 15.0),
                 child: Text(
                   'Next',
                   style: GoogleFonts.ubuntu(

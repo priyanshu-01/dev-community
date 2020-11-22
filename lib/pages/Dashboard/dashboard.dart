@@ -7,12 +7,10 @@ import 'package:dsc_projects/mainPage.dart';
 import 'package:dsc_projects/services/authService.dart';
 
 List postDocumentSnapshots = List();
-
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
 }
-
 class _DashboardState extends State<Dashboard> {
   bool _postOpened = false;
   @override
@@ -25,68 +23,79 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            color: Colors.white,
+            color: Colors.grey[800],
             child:
                 ListView(physics: BouncingScrollPhysics(), children: <Widget>[
               Container(
-                  color: Colors.white,
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(30, 20, 20, 10),
+                          padding: const EdgeInsets.fromLTRB(20, 25, 20, 15),
                           child: Container(
-                              width: 100.0,
-                              height: 100.0,
+                              width: 120.0,
+                              height: 120.0,
                               decoration: new BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: new DecorationImage(
                                       fit: BoxFit.fill,
                                       image:
-                                          NetworkImage(firestore.imageURL)))),
+                                          NetworkImage(firestore.imageURL,)))),
                         ),
                         Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(25, 5, 0, 5),
+                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                               child: Container(
                                   child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: <Widget>[
                                     Container(
                                       child: Text(firestore.name,
                                           style: TextStyle(
-                                            fontSize: 20,
+                                            fontSize: 25,
                                             fontWeight: FontWeight.bold,
+                                            color:Colors.white,
                                           )),
                                     ),
-                                    Divider(color: Colors.black, endIndent: 70),
+                                    Divider(color: Colors.white, endIndent: 60,indent: 60,),
                                     Container(
                                         width: 300,
                                         child: Text(
                                           userFirebaseDocumentMap['bio'],
+                                          style: TextStyle(color:Colors.white,fontSize: 16),
+                                          textAlign: TextAlign.center,
                                         )),
                                   ])),
                             ),
                           ],
                         ),
                       ])),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
+                        child: Divider(
+                          thickness: .3,
+                          color: Colors.white, 
+                          indent: 8,
+                          endIndent: 8,
+                        ),
+                      ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 10),
                 child: Container(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                       Text('Posts',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 25,
+                            color:Colors.white
                           )),
                     ])),
               ),
               Container(
-                  margin: EdgeInsets.all(8),
                   child: (postDocumentSnapshots.isEmpty)
                       ? NoPostsYet()
                       : ListView.builder(
@@ -98,15 +107,15 @@ class _DashboardState extends State<Dashboard> {
                           itemCount: postDocumentSnapshots.length,
                           itemBuilder: (context, int a) {
                             return Container(
-                                padding: EdgeInsets.all(4),
                                 child: Post(doc: postDocumentSnapshots[a]));
                           })),
             ])),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
             onPressed: () {
               GoogleAuthentication().signOutGoogle();
             },
-            child: Icon(Icons.logout)));
+            child: Icon(Icons.logout,color: Colors.black,)));
   }
 }
 

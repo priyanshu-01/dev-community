@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.grey[800],
       //  child: Post()
 
       child: FutureBuilder<QuerySnapshot>(
@@ -29,12 +29,10 @@ class HomePage extends StatelessWidget {
               itemCount: snapshot.data.docs.length,
               itemBuilder: (context, index) {
                 return Post(doc: snapshot.data.docs[index]);
-                // Text(snapshot.data.docs[index].data()['title']);
               },
             );
         },
       ),
-      // child: Post(),
     );
   }
 }
