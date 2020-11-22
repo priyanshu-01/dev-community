@@ -85,7 +85,6 @@ class _AddWorkState extends State<AddWork> {
                     print(e);
                   }
                   }
-
                   // if (_image != null) {
                   //   var eventImgRef = firebaseStorageRef.child(name);
                   //   var imgUpload = eventImgRef.putFile(_image);
