@@ -13,13 +13,26 @@ class BottomSection extends StatefulWidget {
 }
 
 class _BottomSectionState extends State<BottomSection> {
-  bool isLiked = false;
+  int likesCount;
+  bool isLiked;
+
+  @override
+  void initState() {
+    super.initState();
+    likesCount = 0;
+    isLiked = false;
+    if (widget.doc.data()['likes'] != null) {
+      likesCount =
+          commonFunctions.getMapLengthWhereNotNull(widget.doc.data()['likes']);
+      isLiked = widget.doc.data()['likes'][firestore.uid] == true;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     Timestamp ts = widget.doc.data()['timestamp'];
     var d = DateTime.now();
-    print(' and $ts');
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -50,10 +63,12 @@ class _BottomSectionState extends State<BottomSection> {
                                   onTap: () {
                                     setState(() {
                                       isLiked = !isLiked;
-                                      if (isLiked)
+                                      if (isLiked) {
                                         firestore.likePost(widget.doc);
-                                      else {
+                                        likesCount = likesCount + 1;
+                                      } else {
                                         firestore.unlikePost(widget.doc);
+                                        likesCount = likesCount - 1;
                                       }
                                     });
                                   },
@@ -61,12 +76,7 @@ class _BottomSectionState extends State<BottomSection> {
                               ),
                               Container(
                                 child: Text(
-                                  (widget.doc.data()['likes'] != null)
-                                      ? widget.doc
-                                          .data()['likes']
-                                          .length
-                                          .toString()
-                                      : '0',
+                                  likesCount.toString(),
                                   style: TextStyle(fontSize: 10.0),
                                 ),
                               ),

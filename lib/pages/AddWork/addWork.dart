@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dsc_projects/mainPage.dart';
 
 class AddWork extends StatefulWidget {
   @override
@@ -40,7 +41,9 @@ class _AddWorkState extends State<AddWork> {
                   const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40.0),
               child: TextField(
                 controller: _title,
-                decoration: InputDecoration(hintText: 'Title',),
+                decoration: InputDecoration(
+                  hintText: 'Title',
+                ),
               ),
             ),
             Padding(
@@ -66,42 +69,51 @@ class _AddWorkState extends State<AddWork> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: IconButton(icon: Icon(Icons.add_a_photo), onPressed: getImage,iconSize: 40,),
+              child: IconButton(
+                icon: Icon(Icons.add_a_photo),
+                onPressed: getImage,
+                iconSize: 40,
+              ),
             ),
             RaisedButton(
               color: Colors.white,
               child: Text('Post'),
-              onPressed: () async {            
-                  var name=_title.text;
-                  String imgURL;
-                  // var firebaseStorageRef =FirebaseStorage.instance.ref().child("team").putFile(_image);
-                  if(_image!=null){
-                  try{  
-                  firebase_storage.UploadTask task= firebase_storage.FirebaseStorage.instance.ref('uploads/$name').putFile(_image);
-                  firebase_storage.TaskSnapshot snapshot = await task;
-                  imgURL=await snapshot.ref.getDownloadURL();
-                  }
-                  catch (e){
+              onPressed: () async {
+                var name = _title.text;
+                String images;
+                // var firebaseStorageRef =FirebaseStorage.instance.ref().child("team").putFile(_image);
+                if (_image != null) {
+                  try {
+                    firebase_storage.UploadTask task = firebase_storage
+                        .FirebaseStorage.instance
+                        .ref('uploads/$name')
+                        .putFile(_image);
+                    firebase_storage.TaskSnapshot snapshot = await task;
+                    images = await snapshot.ref.getDownloadURL();
+                  } catch (e) {
                     print(e);
                   }
-                  }
-                  // if (_image != null) {
-                  //   var eventImgRef = firebaseStorageRef.child(name);
-                  //   var imgUpload = eventImgRef.putFile(_image);
-                  //   // var tempSnapshot = await imgUpload.onComplete;
-                  //   // profileImgURL = await tempSnapshot.ref.getDownloadURL();
-                  // }
-                  print(imgURL);
-                  FirebaseFirestore.instance.collection('posts').add({
+                }
+
+                // if (_image != null) {
+                //   var eventImgRef = firebaseStorageRef.child(name);
+                //   var imgUpload = eventImgRef.putFile(_image);
+                //   // var tempSnapshot = await imgUpload.onComplete;
+                //   // profileImgURL = await tempSnapshot.ref.getDownloadURL();
+                // }
+                print(images);
+                FirebaseFirestore.instance.collection('posts').add({
                   'title': _title.text,
                   'description': _description.text,
                   'timestamp': Timestamp.now(),
-                  'name': 'username',
-                  'imgURL': imgURL
+                  'name': firestore.name,
+                  'myImageURL': firestore.imageURL,
+                  'uid': firestore.uid,
+                  'email': firestore.email,
+                  'images': images,
                 });
-                 _title.clear();
+                _title.clear();
                 _description.clear();
-              
               },
             )
           ],
