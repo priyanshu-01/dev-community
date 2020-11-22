@@ -40,7 +40,6 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   Widget build(BuildContext context) {
     var topBar = new AppBar(
       backgroundColor: Colors.white,
-      // centerTitle: true,
       elevation: 2.0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,38 +56,14 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
           Flexible(
             flex: 10,
             child: Container(
-              // height: 20.0,
-              // color: Colors.red,
-              child:
-                  //      Image(
-                  //   image: AssetImage('assets/images/logoname.png'),
-                  // )
-                  AutoSizeText(
+              child: AutoSizeText(
                 'DEV COMMUNITY',
                 style: GoogleFonts.raleway(color: Colors.black),
                 maxLines: 1,
                 maxFontSize: 15.0,
               ),
-              // Column(
-              //   crossAxisAlignment: CrossAxisAlignment.end,
-              //   children: [
-              // AutoSizeText(
-              //   'Developer Student Clubs',
-              //   style: TextStyle(color: Colors.black),
-              //   maxLines: 1,
-              //   maxFontSize: 15.0,
-              // ),
-              //     AutoSizeText(
-              //       'Bharati Vidyapeeth University, Pune',
-              //       style: TextStyle(color: Color(0xff969696)),
-              //       maxLines: 1,
-              //       minFontSize: 9.0,
-              //       maxFontSize: 10.0,
-              //     )
-              //   ],
-              // ),
             ),
-          )
+          ),
         ],
       ),
       actions: <Widget>[],
@@ -103,7 +78,6 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
           child: new BottomAppBar(
             color: Colors.black,
             child: new Row(
-              // alignment: MainAxisAlignment.spaceAround,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 new IconButton(
@@ -119,19 +93,6 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                     });
                   },
                 ),
-                // new IconButton(
-                //   icon: Icon(
-                //     Icons.search,
-                //   ),
-                //   color: (currentPage == pages.Search)
-                //       ? Colors.blue
-                //       : Colors.white,
-                //   onPressed: () {
-                //     pageKey.currentState.setState(() {
-                //       currentPage = pages.Search;
-                //     });
-                //   },
-                // ),
                 new IconButton(
                   icon: Icon(
                     Icons.add_box,

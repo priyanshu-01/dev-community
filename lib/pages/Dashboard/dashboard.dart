@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dsc_projects/pages/Dashboard/posts.dart';
+import 'package:dsc_projects/pages/Dashboard/bio.dart';
 import 'package:dsc_projects/pages/Home/post.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/mainPage.dart';
@@ -18,20 +18,11 @@ class _DashboardState extends State<Dashboard> {
     getPosts().whenComplete(() => setState(() {}));
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        setState(() {
-          _postOpened = false;
-        });
-        return false;
-      },
-      child: Container(
+    return Container(
           color: Colors.white,
-          child: (!_postOpened)
-              ? ListView(physics: BouncingScrollPhysics(), children: <Widget>[
+          child: ListView(physics: BouncingScrollPhysics(), children: <Widget>[
                   Container(
                       color: Colors.white,
                       child: Column(
@@ -105,24 +96,12 @@ class _DashboardState extends State<Dashboard> {
                               itemBuilder: (context, int a) {
                                 return Container(
                                     padding: EdgeInsets.all(4),
-                                    child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _postOpened = true;
-                                          });
-                                          // Navigator.of(context).push(MaterialPageRoute(
-                                          //     builder: (BuildContext context) => Posts()));
-                                        },
-                                        child:
-                                            Post(doc: postDocumentSnapshots[a])
-                                        // Image.network(
-                                        //     "https://images.pexels.com/photos/672657/pexels-photo-672657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-                                        ));
+                                    child:Post(doc: postDocumentSnapshots[a])
+                                        );
                               })),
                   // )
                 ])
-              : Posts()),
-    );
+      );
   }
 }
 

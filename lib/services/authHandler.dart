@@ -1,4 +1,5 @@
 import 'package:dsc_projects/mainPage.dart';
+import 'package:dsc_projects/pages/Dashboard/bio.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
 import 'package:dsc_projects/pages/loading.dart';
 import 'package:dsc_projects/services/anon.dart';
@@ -99,7 +100,7 @@ Widget fetchFutureGoogle() {
           name = userFirebaseDocumentMap['name'];
           imageUrl = userFirebaseDocumentMap['imageUrl'];
         }
-        return MainPageWithAppBar();
+        return Bio();
       }
     },
   );
