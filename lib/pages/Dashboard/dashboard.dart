@@ -101,7 +101,6 @@ class _DashboardState extends State<Dashboard> {
                                       child:Post(doc: postDocumentSnapshots[a])
                                           );
                                 })),
-                    // )
                   ])
         ),
         floatingActionButton: FloatingActionButton( onPressed: (){
