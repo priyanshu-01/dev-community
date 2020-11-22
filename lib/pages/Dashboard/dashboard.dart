@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dsc_projects/pages/Dashboard/bio.dart';
 import 'package:dsc_projects/pages/Home/post.dart';
+import 'package:dsc_projects/services/authHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/mainPage.dart';
 import 'package:dsc_projects/services/authService.dart';
@@ -19,10 +20,11 @@ class _DashboardState extends State<Dashboard> {
     getPosts().whenComplete(() => setState(() {}));
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: Container(
+        body: Container(
             color: Colors.white,
             child: ListView(physics: BouncingScrollPhysics(), children: <Widget>[
                     Container(
@@ -109,6 +111,7 @@ class _DashboardState extends State<Dashboard> {
         child: Icon(Icons.logout))
     );
     
+
   }
 }
 

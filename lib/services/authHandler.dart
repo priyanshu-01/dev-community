@@ -21,6 +21,7 @@ var checkSignInMethod = signInMethod.anonymous;
 enum status { signedIn, notSignedIn }
 var signInStatus = status.notSignedIn;
 AsyncSnapshot userAuthenticationSnapshot;
+GlobalKey bioOrMainPageWidgetKey = new GlobalKey();
 
 class AuthHandler extends StatelessWidget {
   @override
@@ -48,7 +49,7 @@ class AuthHandler extends StatelessWidget {
               uid = snapshot.data.uid;
               firestore = FirestoreFunctions(
                   email: email, imageURL: imageUrl, name: name, uid: uid);
-              return fetchFutureGoogle();
+              return FetchFutureGoogle();
             }
           } else
           // LoginPage
@@ -85,28 +86,55 @@ Widget fetchFutureAnonymous() {
   );
 }
 
-Widget fetchFutureGoogle() {
-  return FutureBuilder<QuerySnapshot>(
-    future: FirebaseFirestore.instance
-        .collection('users google')
-        .where('uid', isEqualTo: uid)
-        .get(),
-    builder: (context, snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting)
-        return Loading();
-      else {
-        if (snapshot.data.docs.length == 0) {
-          GoogleAuthentication().createGoogleUser();
-        } else {
-          userFirebaseDocumentMap = snapshot.data.docs[0].data();
-          userFirebaseDocumentId = snapshot.data.docs[0].id;
-          name = userFirebaseDocumentMap['name'];
-          imageUrl = userFirebaseDocumentMap['imageUrl'];
+class FetchFutureGoogle extends StatefulWidget {
+  @override
+  _FetchFutureGoogleState createState() => _FetchFutureGoogleState();
+}
+
+class _FetchFutureGoogleState extends State<FetchFutureGoogle> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<QuerySnapshot>(
+      future: FirebaseFirestore.instance
+          .collection('users google')
+          .where('uid', isEqualTo: uid)
+          .get(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting)
+          return Loading();
+        else {
+          if (snapshot.data.docs.length == 0) {
+            GoogleAuthentication()
+                .createGoogleUser()
+                .whenComplete(() => setState(() {}));
+            return Loading();
+          } else {
+            userFirebaseDocumentMap = snapshot.data.docs[0].data();
+            userFirebaseDocumentId = snapshot.data.docs[0].id;
+            name = userFirebaseDocumentMap['name'];
+            imageUrl = userFirebaseDocumentMap['imageUrl'];
+            return BioOrMainPage();
+          }
         }
-        return MainPageWithAppBar();
-      }
-    },
-  );
+      },
+    );
+  }
+}
+
+class BioOrMainPage extends StatefulWidget {
+  BioOrMainPage() : super(key: bioOrMainPageWidgetKey);
+  @override
+  _BioOrMainPageState createState() => _BioOrMainPageState();
+}
+
+class _BioOrMainPageState extends State<BioOrMainPage> {
+  @override
+  Widget build(BuildContext context) {
+    if (userFirebaseDocumentMap['bio'] == null)
+      return Bio();
+    else
+      return MainPageWithAppBar();
+  }
 }
 
 class LoginPage extends StatelessWidget {
@@ -116,19 +144,22 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: Container(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children:<Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image(image: AssetImage('assets/images/logo.png')),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                child: Container(
-                child: Text(
-                  'DEV COMMUNITY',
-                  style: GoogleFonts.raleway(color: Colors.black,fontSize: 30),
-                  maxLines: 1,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image(image: AssetImage('assets/images/logo.png')),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                  child: Container(
+                    child: Text(
+                      'DEV COMMUNITY',
+                      style: GoogleFonts.raleway(
+                          color: Colors.black, fontSize: 30),
+                      maxLines: 1,
+                    ),
+                  ),
                 ),
             ),
               ),
@@ -140,10 +171,10 @@ class LoginPage extends StatelessWidget {
                    onPressed: () {
                      GoogleAuthentication().signInWithGoogle();
                    },
+
                   ),
-              )
-            ]
-          ),
+                )
+              ]),
         ),
       ),
     );
