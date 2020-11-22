@@ -32,7 +32,6 @@ class _AddWorkState extends State<AddWork> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.pink,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -81,7 +80,6 @@ class _AddWorkState extends State<AddWork> {
               onPressed: () async {
                 var name = _title.text;
                 String images;
-                // var firebaseStorageRef =FirebaseStorage.instance.ref().child("team").putFile(_image);
                 if (_image != null) {
                   try {
                     firebase_storage.UploadTask task = firebase_storage
