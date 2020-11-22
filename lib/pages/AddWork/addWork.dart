@@ -94,13 +94,6 @@ class _AddWorkState extends State<AddWork> {
                     print(e);
                   }
                 }
-
-                // if (_image != null) {
-                //   var eventImgRef = firebaseStorageRef.child(name);
-                //   var imgUpload = eventImgRef.putFile(_image);
-                //   // var tempSnapshot = await imgUpload.onComplete;
-                //   // profileImgURL = await tempSnapshot.ref.getDownloadURL();
-                // }
                 print(images);
                 FirebaseFirestore.instance.collection('posts').add({
                   'title': _title.text,

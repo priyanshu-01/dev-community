@@ -56,11 +56,10 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
           Flexible(
             flex: 10,
             child: Container(
-              child: AutoSizeText(
+              child: Text(
                 'DEV COMMUNITY',
-                style: GoogleFonts.raleway(color: Colors.black),
+                style: GoogleFonts.raleway(color: Colors.black,fontSize: 15),
                 maxLines: 1,
-                maxFontSize: 15.0,
               ),
             ),
           ),
