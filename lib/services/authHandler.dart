@@ -161,17 +161,14 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-            ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 35, 20, 0),
-                child: SignInButton(
-                 Buttons.GoogleDark,
-                  text: "Sign up with Google",
-                   onPressed: () {
-                     GoogleAuthentication().signInWithGoogle();
-                   },
-
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 35, 20, 0),
+                  child: SignInButton(
+                    Buttons.Google,
+                    text: "Sign up with Google",
+                    onPressed: () {
+                      GoogleAuthentication().signInWithGoogle();
+                    },
                   ),
                 )
               ]),
