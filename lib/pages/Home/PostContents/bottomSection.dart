@@ -91,10 +91,6 @@ class _BottomSectionState extends State<BottomSection> {
                   ),
                 ],
               ),
-              new Icon(
-                FontAwesomeIcons.infoCircle,
-                color: Colors.white,
-              )
             ],
           ),
         ),

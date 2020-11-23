@@ -20,7 +20,13 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   intl: ^0.16.1
   flutter_signin_button: ^1.1.0
+  flutter_launcher_icons: ^0.8.1
 
+flutter_icons:
+  ios: true
+  android: true
+  image_path_android: "assets/images/appicon.png"
+  image_path_ios: "assets/images/appicon.png"
 
 dev_dependencies:
   flutter_test:
@@ -54,18 +60,6 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Billabong
-      fonts:
-        - asset: assets/fonts/Billabong.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-    - family: Aveny
-      fonts:
-        - asset: assets/fonts/AvenyTRegular.otf
-          style: normal
-        - asset: assets/fonts/AvenyTMedium.otf
-          style: italic
         # - asset: fonts/TrajanPro_Bold.ttf
         #   weight: 700
   #

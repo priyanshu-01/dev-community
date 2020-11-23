@@ -47,22 +47,6 @@ class UpdateBio extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Flexible(
-              //     flex: 2,
-              //     child: Container(
-              //       child: Image(
-              //         image: AssetImage('assets/images/applogo.png'),height: 60,color: Colors.white,
-              //       ),
-              //     )),
-              // Flexible(flex: 1, child: Container()),
-              // Flexible(
-              //   flex: 3,
-              //   child: Container(
-              //     child: Image(
-              //       image: AssetImage('assets/images/appname.png'),height: 25,color: Colors.white,
-              //     ),
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
