@@ -40,6 +40,7 @@ class _AddWorkState extends State<AddWork> {
     return Scaffold(
       backgroundColor: Colors.grey[800],
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Container(
           child: Column(
             children: <Widget>[
@@ -103,7 +104,7 @@ class _AddWorkState extends State<AddWork> {
                     horizontal: 50.0, vertical: 20.0),
                 child: InkWell(
                   child: Card(
-                    color: Colors.grey[600],
+                    color: Colors.blue,
                     child: Container(
                       height: 250,
                       width: 250,
@@ -149,7 +150,10 @@ class _AddWorkState extends State<AddWork> {
                     Navigator.pop(context);
                   },
                 ),
-              )
+              ),
+              SizedBox(
+                height: 40.0,
+              ),
             ],
           ),
         ),
