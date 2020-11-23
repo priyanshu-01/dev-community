@@ -12,6 +12,7 @@ import 'pages/VisitProfile/visitProfile.dart';
 FirestoreFunctions firestore;
 CommonFunctions commonFunctions;
 // var backButtonBar;
+var titleBar;
 
 GlobalKey pageKey = GlobalKey();
 enum pages { HomePage, Search, AddWork, Dashboard, VisitProfile }
@@ -41,7 +42,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    var titleBar = new AppBar(
+    titleBar = new AppBar(
       backgroundColor: Colors.black,
       elevation: 2.0,
       title: Row(
