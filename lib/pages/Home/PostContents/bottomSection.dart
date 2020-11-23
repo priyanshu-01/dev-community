@@ -57,6 +57,8 @@ class _BottomSectionState extends State<BottomSection> {
                             children: [
                               Container(
                                 child: new InkWell(
+                                  enableFeedback: false,
+                                  splashColor: Colors.transparent,
                                   child: Container(
                                     height: 40.0,
                                     width: 40.0,

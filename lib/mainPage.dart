@@ -7,19 +7,22 @@ import 'package:dsc_projects/pages/Search/search.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'firestore.dart';
+import 'pages/VisitProfile/visitProfile.dart';
 
 FirestoreFunctions firestore;
 CommonFunctions commonFunctions;
+// var backButtonBar;
 
 GlobalKey pageKey = GlobalKey();
-enum pages { HomePage, Search, AddWork, Dashboard }
+enum pages { HomePage, Search, AddWork, Dashboard, VisitProfile }
 var currentPage = pages.HomePage;
 
 Map<dynamic, Widget> getPage = {
   pages.AddWork: AddWork(),
   pages.Dashboard: Dashboard(),
   pages.HomePage: HomePage(),
-  pages.Search: Search()
+  pages.Search: Search(),
+  pages.VisitProfile: VisitProfile(),
 };
 
 class MainPageWithAppBar extends StatefulWidget {
@@ -38,7 +41,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    var topBar = new AppBar(
+    var titleBar = new AppBar(
       backgroundColor: Colors.black,
       elevation: 2.0,
       title: Row(
@@ -57,15 +60,20 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
           Flexible(
             flex: 10,
             child: Container(
-              child: Image.asset('assets/images/appname.png',height:17,color: Colors.white,)
-            ),
+                child: Image.asset(
+              'assets/images/appname.png',
+              height: 17,
+              color: Colors.white,
+            )),
           ),
         ],
       ),
       actions: <Widget>[],
     );
+
     return new Scaffold(
-        appBar: topBar,
+        appBar:
+            (currentPage == pages.VisitProfile) ? backButtonBar() : titleBar,
         body: getPage[currentPage],
         bottomNavigationBar: new Container(
           color: Colors.black,

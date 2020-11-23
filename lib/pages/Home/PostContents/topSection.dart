@@ -1,5 +1,8 @@
+import 'package:dsc_projects/pages/VisitProfile/visitProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../mainPage.dart';
 
 class TopSection extends StatelessWidget {
   final doc;
@@ -15,26 +18,38 @@ class TopSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  new Container(
-                    height: 45.0,
-                    width: 45.0,
-                    decoration: new BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: new DecorationImage(
-                          fit: BoxFit.fill,
-                          image: new NetworkImage(doc.data()['myImageURL'])),
+              InkWell(
+                splashColor: Colors.transparent,
+                onTap: () {
+                  pageKey.currentState.setState(() {
+                    visitProfileUserId = doc.data()['uid'];
+                    currentPage = pages.VisitProfile;
+                  });
+                },
+                child: Row(
+                  children: <Widget>[
+                    new Container(
+                      height: 45.0,
+                      width: 45.0,
+                      decoration: new BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: new DecorationImage(
+                            fit: BoxFit.fill,
+                            image: new NetworkImage(doc.data()['myImageURL'])),
+                      ),
                     ),
-                  ),
-                  new SizedBox(
-                    width: 10.0,
-                  ),
-                  new Text(
-                    doc.data()['name'],
-                    style: GoogleFonts.roboto(fontWeight: FontWeight.w700,fontSize: 17,color: Colors.white),
-                  )
-                ],
+                    new SizedBox(
+                      width: 10.0,
+                    ),
+                    new Text(
+                      doc.data()['name'],
+                      style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17,
+                          color: Colors.white),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
@@ -47,9 +62,14 @@ class TopSection extends StatelessWidget {
                 children: [
                   Text(
                     doc.data()['title'],
-                    style: GoogleFonts.roboto(fontWeight: FontWeight.w500,fontSize: 16,color: Colors.white),
+                    style: GoogleFonts.roboto(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: Colors.white),
                   ),
-                  Text(doc.data()['description'],style: TextStyle(fontSize: 13,color: Colors.white),
+                  Text(
+                    doc.data()['description'],
+                    style: TextStyle(fontSize: 13, color: Colors.white),
                   )
                 ],
               ),
