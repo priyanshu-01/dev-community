@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dsc_projects/pages/Dashboard/bio.dart';
+import 'package:dsc_projects/pages/Dashboard/updatebio.dart';
 import 'package:dsc_projects/pages/Home/post.dart';
 import 'package:dsc_projects/services/authHandler.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,23 @@ class _DashboardState extends State<Dashboard> {
                                           style: TextStyle(color:Colors.white,fontSize: 16),
                                           textAlign: TextAlign.center,
                                         )),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context) => UpdateBio()),);
+                                        },
+                                        child: Container(
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children:<Widget>[
+                                              Icon(Icons.edit,color: Colors.grey[500],size: 15,),
+                                              Text('Edit Bio',style: TextStyle(color:Colors.grey[500]),)
+                                            ]
+                                          ),
+                                        ),
+                                      ),
+                                    )
                                   ])),
                             ),
                           ],
@@ -106,8 +124,26 @@ class _DashboardState extends State<Dashboard> {
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: postDocumentSnapshots.length,
                           itemBuilder: (context, int a) {
-                            return Container(
-                                child: Post(doc: postDocumentSnapshots[a]));
+                            return Card(
+                              color: Colors.grey[900],
+                                child: Padding(
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Column(
+                                    children:<Widget>[
+                                      Post(doc: postDocumentSnapshots[a]),
+                                      GestureDetector(
+                                        onTap: (){
+                                          firestore.deletePost(postDocumentSnapshots[a]);
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                                          child: Icon(Icons.delete,size: 30,color: Colors.white,),
+                                        ),
+                                      )
+                                    ]
+                                  ),
+                                )
+                            );
                           })),
             ])),
         floatingActionButton: FloatingActionButton(
