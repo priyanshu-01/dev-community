@@ -32,7 +32,7 @@ class TopSection extends StatelessWidget {
                   ),
                   new Text(
                     doc.data()['name'],
-                    style: GoogleFonts.roboto(fontWeight: FontWeight.w700,fontSize: 17,color: Colors.white),
+                    style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18,color: Colors.white),
                   )
                 ],
               ),
@@ -47,9 +47,9 @@ class TopSection extends StatelessWidget {
                 children: [
                   Text(
                     doc.data()['title'],
-                    style: GoogleFonts.roboto(fontWeight: FontWeight.w500,fontSize: 16,color: Colors.white),
+                    style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16,color: Colors.white),
                   ),
-                  Text(doc.data()['description'],style: TextStyle(fontSize: 13,color: Colors.white),
+                  Text(doc.data()['description'],style: TextStyle(fontSize: 14,color: Colors.white),
                   )
                 ],
               ),

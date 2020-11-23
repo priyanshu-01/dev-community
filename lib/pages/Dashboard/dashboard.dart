@@ -29,7 +29,7 @@ class _DashboardState extends State<Dashboard> {
                 ListView(physics: BouncingScrollPhysics(), children: <Widget>[
               Container(
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Padding(
@@ -47,27 +47,27 @@ class _DashboardState extends State<Dashboard> {
                         Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                              padding: const EdgeInsets.fromLTRB(20, 5, 0, 5),
                               child: Container(
                                   child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          CrossAxisAlignment.start,
                                       children: <Widget>[
                                     Container(
                                       child: Text(firestore.name,
                                           style: TextStyle(
                                             fontSize: 25,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w600,
                                             color:Colors.white,
                                           )),
                                     ),
-                                    Divider(color: Colors.white, endIndent: 60,indent: 60,),
+                                    Divider(color: Colors.white, endIndent: 70,indent: 2,),
                                     Container(
                                         width: 300,
                                         child: Text(
                                           userFirebaseDocumentMap['bio'],
                                           style: TextStyle(color:Colors.white,fontSize: 16),
-                                          textAlign: TextAlign.center,
+                                          
                                         )),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
@@ -77,7 +77,7 @@ class _DashboardState extends State<Dashboard> {
                                         },
                                         child: Container(
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.start,
                                             children:<Widget>[
                                               Icon(Icons.edit,color: Colors.grey[500],size: 15,),
                                               Text('Edit Bio',style: TextStyle(color:Colors.grey[500]),)
@@ -94,10 +94,10 @@ class _DashboardState extends State<Dashboard> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
                         child: Divider(
-                          thickness: .3,
+                          thickness: .2,
                           color: Colors.white, 
-                          indent: 8,
-                          endIndent: 8,
+                          indent: 10,
+                          endIndent: 10,
                         ),
                       ),
               Padding(
@@ -166,8 +166,11 @@ Future<void> getPosts() async {
 class NoPostsYet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('NO posts yet'),
+    return Padding(
+      padding: const EdgeInsets.all(25.0),
+      child: Container(
+        child: Text('\' Not Posted Yet \'',style: TextStyle(fontSize:20,color:Colors.white),textAlign: TextAlign.center,),
+      ),
     );
   }
 }

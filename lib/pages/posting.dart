@@ -9,20 +9,25 @@ class Posting extends StatelessWidget {
       child: Scaffold(
         body: Center(
           child: Container(
-            color: Colors.black,
+            color: Colors.grey[900],
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 50),
+                  child: Image.asset('assets/images/applogo.png',color: Colors.white,scale: 1.5,),
+                ),
                 SpinKitWanderingCubes(
-                  color: Colors.blue,
-                  size: 100.0,
+                  color: Colors.white,
+                  size: 90.0,
                 ),
                 SizedBox(
                   height: 60.0,
                 ),
                 Text('Sharing to the Community...',
-                    style: GoogleFonts.raleway(
+                    style: GoogleFonts.ubuntu(
                       color: Colors.white,
+                      fontSize: 20
                     ))
               ],
             ),

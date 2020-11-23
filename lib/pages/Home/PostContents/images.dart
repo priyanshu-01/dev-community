@@ -10,7 +10,7 @@ class Images extends StatelessWidget {
       semanticContainer: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0),),
-          child: Image.asset('assets/images/database.jpg',
+          child: Image.network(doc.data()['images'],
         // doc.data()['images'],
         fit: BoxFit.fitHeight,
         height: 400,
