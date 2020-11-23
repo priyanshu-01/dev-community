@@ -40,7 +40,7 @@ class _VisitProfileState extends State<VisitProfile> {
                 ListView(physics: BouncingScrollPhysics(), children: <Widget>[
               Container(
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                     Padding(
@@ -59,23 +59,23 @@ class _VisitProfileState extends State<VisitProfile> {
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                          padding: const EdgeInsets.fromLTRB(20, 5, 0, 5),
                           child: Container(
                               child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                 Container(
                                   child: Text(visitProfileUser.data()['name'],
                                       style: TextStyle(
                                         fontSize: 25,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         color: Colors.white,
                                       )),
                                 ),
                                 Divider(
                                   color: Colors.white,
-                                  endIndent: 60,
-                                  indent: 60,
+                                  endIndent: 70,
+                                  indent: 2,
                                 ),
                                 Container(
                                     width: 300,
@@ -83,7 +83,6 @@ class _VisitProfileState extends State<VisitProfile> {
                                       visitProfileUser.data()['bio'],
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 16),
-                                      textAlign: TextAlign.center,
                                     )),
                               ])),
                         ),
@@ -93,10 +92,10 @@ class _VisitProfileState extends State<VisitProfile> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
                 child: Divider(
-                  thickness: .3,
+                  thickness: .2,
                   color: Colors.white,
-                  indent: 8,
-                  endIndent: 8,
+                  indent: 10,
+                  endIndent: 10,
                 ),
               ),
               Padding(
