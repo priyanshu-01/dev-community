@@ -162,10 +162,10 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 35, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 45, 20, 0),
                   child: Container(
                     height: 45,
-                    width: 180,
+                    width: 200,
                     child: SignInButton(
                       Buttons.Google,
                       text: "Sign in with Google",

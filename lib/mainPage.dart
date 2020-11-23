@@ -62,7 +62,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
             child: Container(
                 child: Image.asset(
               'assets/images/appname.png',
-              height: 17,
+              height: 17.5,
               color: Colors.white,
             )),
           ),
@@ -90,7 +90,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                     size: 30,
                   ),
                   color: (currentPage == pages.HomePage)
-                      ? Colors.white
+                      ? Colors.blue
                       : Colors.grey[700],
                   onPressed: () {
                     pageKey.currentState.setState(() {
@@ -104,7 +104,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                     size: 30,
                   ),
                   color: (currentPage == pages.AddWork)
-                      ? Colors.white
+                      ? Colors.blue
                       : Colors.grey[700],
                   onPressed: () {
                     pageKey.currentState.setState(() {
@@ -118,7 +118,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                     size: 30,
                   ),
                   color: (currentPage == pages.Dashboard)
-                      ? Colors.white
+                      ? Colors.blue
                       : Colors.grey[700],
                   onPressed: () {
                     pageKey.currentState.setState(() {

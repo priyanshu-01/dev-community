@@ -5,6 +5,7 @@ import 'package:dsc_projects/services/authHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:dsc_projects/mainPage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 List userData = List();
 QueryDocumentSnapshot a;
@@ -33,9 +34,8 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.black,
           buttonColor: Colors.black,
           primaryIconTheme: IconThemeData(color: Colors.black),
-          primaryTextTheme: TextTheme(
-              bodyText1: TextStyle(color: Colors.black, fontFamily: "Aveny")),
-          textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black))),
+          textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme,
+        ),),
       home: new AuthHandler(),
       // home: Bio(),
     );

@@ -12,8 +12,8 @@ class Images extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4.0),
       ),
-      child: Image.asset(
-        'assets/images/database.jpg',
+      child: Image.network(
+        doc.data()['images'],
         // doc.data()['images'],
         fit: BoxFit.fitHeight,
         height: 400,

@@ -15,43 +15,39 @@ class TopSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              InkWell(
-                splashColor: Colors.transparent,
-                onTap: () {
-                  pageKey.currentState.setState(() {
-                    visitProfileUserId = doc.data()['uid'];
-                    currentPage = pages.VisitProfile;
-                  });
-                },
-                child: Row(
-                  children: <Widget>[
-                    new Container(
-                      height: 45.0,
-                      width: 45.0,
-                      decoration: new BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: new DecorationImage(
-                            fit: BoxFit.fill,
-                            image: new NetworkImage(doc.data()['myImageURL'])),
-                      ),
-                    ),
-                    new SizedBox(
-                      width: 10.0,
-                    ),
-                    new Text(
-                      doc.data()['name'],
-                      style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 17,
-                          color: Colors.white),
-                    )
-                  ],
+          InkWell(
+            splashColor: Colors.transparent,
+            onTap: () {
+              pageKey.currentState.setState(() {
+                visitProfileUserId = doc.data()['uid'];
+                currentPage = pages.VisitProfile;
+              });
+            },
+            child: Row(
+              children: <Widget>[
+                new Container(
+                  height: 45.0,
+                  width: 45.0,
+                  decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: new DecorationImage(
+                        fit: BoxFit.fill,
+                        image: new NetworkImage(doc.data()['myImageURL'])),
+                  ),
                 ),
-              ),
-            ],
+                // ),),
+                new SizedBox(
+                  width: 10.0,
+                ),
+                new Text(
+                  doc.data()['name'],
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Colors.white),
+                )
+              ],
+            ),
           ),
           Padding(
             padding:
@@ -62,14 +58,14 @@ class TopSection extends StatelessWidget {
                 children: [
                   Text(
                     doc.data()['title'],
-                    style: GoogleFonts.roboto(
+                    style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
                         color: Colors.white),
                   ),
                   Text(
                     doc.data()['description'],
-                    style: TextStyle(fontSize: 13, color: Colors.white),
+                    style: TextStyle(fontSize: 14, color: Colors.white),
                   )
                 ],
               ),

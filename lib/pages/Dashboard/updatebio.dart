@@ -79,7 +79,7 @@ class UpdateBio extends StatelessWidget {
               ),
               Text(
                 firestore.name,
-                style: GoogleFonts.ubuntu(
+                style: TextStyle(
                     fontSize: 25.0, color: Colors.white),
               ),              
                         
@@ -145,7 +145,7 @@ class _MyNextButtonState extends State<MyNextButton> {
                     horizontal: 25.0, vertical: 15.0),
                 child: Text(
                   'Next',
-                  style: GoogleFonts.ubuntu(
+                  style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w600),
                 ),
               )

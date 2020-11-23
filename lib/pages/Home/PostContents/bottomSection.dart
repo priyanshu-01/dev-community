@@ -54,14 +54,15 @@ class _BottomSectionState extends State<BottomSection> {
                           bottom: 0.0,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
                                 child: new InkWell(
                                   enableFeedback: false,
                                   splashColor: Colors.transparent,
                                   child: Container(
-                                    height: 40.0,
-                                    width: 40.0,
+                                    height: 30.0,
+                                    width: 30.0,
                                   ),
                                   onTap: () {
                                     setState(() {
@@ -102,10 +103,10 @@ class _BottomSectionState extends State<BottomSection> {
         Padding(
           padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
           child: Text(time,
-              style: GoogleFonts.roboto(
-                  color: Colors.white,
+              style: TextStyle(
+                  color: Colors.grey[500],
                   fontSize: 12.0,
-                  fontWeight: FontWeight.w500)),
+                  )),
         )
       ],
     );
