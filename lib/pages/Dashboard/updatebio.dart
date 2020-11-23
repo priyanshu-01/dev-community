@@ -53,7 +53,7 @@ class UpdateBio extends StatelessWidget {
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'Add You Bio',
+                          hintText: 'Add Your Bio',
                           hintStyle: TextStyle(color: Colors.grey[500])),
                     ),
                   ),

@@ -43,6 +43,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   @override
   Widget build(BuildContext context) {
     titleBar = new AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.black,
       elevation: 2.0,
       title: Row(
