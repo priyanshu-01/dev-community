@@ -79,9 +79,7 @@ class _BottomSectionState extends State<BottomSection> {
                                 child: Text(
                                   likesCount.toString(),
                                   style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.white,
-                                  ),
+                                      fontSize: 12.0, color: Colors.white),
                                 ),
                               ),
                             ],
@@ -94,17 +92,17 @@ class _BottomSectionState extends State<BottomSection> {
               ),
               new Icon(
                 FontAwesomeIcons.infoCircle,
-                color: Colors.green[600],
+                color: Colors.white,
               )
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(22.0, 5.0, 0.0, 0.0),
+          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
           child: Text(time,
               style: GoogleFonts.roboto(
-                  color: Colors.grey[500],
-                  fontSize: 10.0,
+                  color: Colors.white,
+                  fontSize: 12.0,
                   fontWeight: FontWeight.w500)),
         )
       ],

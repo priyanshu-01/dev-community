@@ -8,7 +8,7 @@ class TopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 8.0, 6.0),
+      padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -18,8 +18,8 @@ class TopSection extends StatelessWidget {
               Row(
                 children: <Widget>[
                   new Container(
-                    height: 40.0,
-                    width: 40.0,
+                    height: 45.0,
+                    width: 45.0,
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
                       image: new DecorationImage(
@@ -32,32 +32,25 @@ class TopSection extends StatelessWidget {
                   ),
                   new Text(
                     doc.data()['name'],
-                    style: GoogleFonts.roboto(fontWeight: FontWeight.w700),
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.w700,fontSize: 17,color: Colors.white),
                   )
                 ],
               ),
-              // new IconButton(
-              //   icon: Icon(Icons.more_vert),
-              //   onPressed: null,
-              // )
             ],
           ),
           Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+                const EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
             child: Container(
-              // color: Colors.blue[100],
-              // height: 10.0,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     doc.data()['title'],
-                    style: GoogleFonts.roboto(fontWeight: FontWeight.w500),
+                    style: GoogleFonts.roboto(fontWeight: FontWeight.w500,fontSize: 16,color: Colors.white),
                   ),
-                  Text(doc.data()['description']
-                      // 'Made mobile and web for DSC members to showcase their work and achievements to the team'
-                      )
+                  Text(doc.data()['description'],style: TextStyle(fontSize: 13,color: Colors.white),
+                  )
                 ],
               ),
             ),

@@ -19,23 +19,34 @@ class _PostState extends State<Post> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     // var deviceSize = MediaQuery.of(context).size;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        TopSection(
-          doc: widget.doc,
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0), ),
+      color: Colors.grey[900],
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TopSection(
+              doc: widget.doc,
+            ),
+            (widget.doc.data()['images'] != null)
+                ? Images(
+                    doc: widget.doc,
+                  )
+                : Container(
+                  height: 0,
+                  width: 0,
+                ),
+            BottomSection(
+              doc: widget.doc,
+            ),
+          ],
         ),
-        (widget.doc.data()['images'] != null)
-            ? Images(
-                doc: widget.doc,
-              )
-            : Container(),
-        BottomSection(
-          doc: widget.doc,
-        ),
-      ],
+      ),
     );
   }
 }

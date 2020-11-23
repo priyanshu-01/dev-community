@@ -6,11 +6,14 @@ class Images extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Image.network(
-        doc.data()['images'],
-        fit: BoxFit.cover,
+    return Card(
+      semanticContainer: true,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0),),
+          child: Image.asset('assets/images/database.jpg',
+        // doc.data()['images'],
+        fit: BoxFit.fitHeight,
+        height: 400,
       ),
     );
   }

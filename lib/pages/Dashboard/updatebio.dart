@@ -7,67 +7,82 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../services/authHandler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Bio extends StatelessWidget {
+class UpdateBio extends StatelessWidget {
   final TextEditingController userbio = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
+        elevation: 2.0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(
+              flex: 2,
+              child: Container(
+                  width: 40,
+                  height: 40,
+                  child: Image(
+                    image: AssetImage('assets/images/applogo.png'),
+                    color: Colors.white,
+                  )),
+            ),
+            Flexible(
+              flex: 10,
+              child: Container(
+                  child: Image.asset(
+                'assets/images/appname.png',
+                height: 17,
+                color: Colors.white,
+              )),
+            ),
+          ],
+        ),
+        actions: <Widget>[],
+      ),
       body: Container(
         color: Colors.grey[900],
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Flexible(
-                  flex: 2,
-                  child: Container(
-                    child: Image(
-                      image: AssetImage('assets/images/applogo.png'),height: 60,color: Colors.white,
-                    ),
-                  )),
-              Flexible(flex: 1, child: Container()),
-              Flexible(
-                flex: 3,
+              // Flexible(
+              //     flex: 2,
+              //     child: Container(
+              //       child: Image(
+              //         image: AssetImage('assets/images/applogo.png'),height: 60,color: Colors.white,
+              //       ),
+              //     )),
+              // Flexible(flex: 1, child: Container()),
+              // Flexible(
+              //   flex: 3,
+              //   child: Container(
+              //     child: Image(
+              //       image: AssetImage('assets/images/appname.png'),height: 25,color: Colors.white,
+              //     ),
+              //   ),
+              // ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  child: Image(
-                    image: AssetImage('assets/images/appname.png'),height: 25,color: Colors.white,
-                  ),
+                    width: 120.0,
+                    height: 120.0,
+                    decoration: new BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: new DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                              firestore.imageURL,
+                            )))
                 ),
               ),
-              Flexible(flex: 2, child: Container()),
-              Flexible(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Container(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                              width: 60.0,
-                              height: 60.0,
-                              decoration: new BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: new DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image:
-                                          NetworkImage(firestore.imageURL,)))
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        Text(
-                          firestore.name,
-                          style: GoogleFonts.ubuntu(fontSize: 20.0,color: Colors.white),
-                        ),
-                        SizedBox(
-                          width: 20.0,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              Text(
+                firestore.name,
+                style: GoogleFonts.ubuntu(
+                    fontSize: 25.0, color: Colors.white),
+              ),              
+                        
               Flexible(flex: 1, child: Container()),
               Flexible(
                 flex: 4,
@@ -75,17 +90,23 @@ class Bio extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Container(
                     child: TextField(
-                      style: TextStyle(color:Colors.white),
+                      cursorColor: Colors.white,
+                      style: TextStyle(color: Colors.white),
                       controller: userbio,
-                      decoration: InputDecoration(hintText: 'Add You Bio',hintStyle: TextStyle(color: Colors.grey[500])),
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey[500]),  
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),  
+                        ),
+                          hintText: 'Add You Bio',
+                          hintStyle: TextStyle(color: Colors.grey[500])),
                     ),
                   ),
                 ),
               ),
-              Flexible(
-                  flex: 2,
-                  child: Container(
-                      )),
+              Flexible(flex: 2, child: Container()),
               Flexible(
                   flex: 2,
                   child: MyNextButton(
@@ -154,7 +175,7 @@ class _MyNextButtonState extends State<MyNextButton> {
         });
         await firestore.addBio(widget.userbio.text);
         userFirebaseDocumentMap['bio'] = widget.userbio.text;
-        bioOrMainPageWidgetKey.currentState.setState(() {});
+        Navigator.pop(context);
       },
     );
   }

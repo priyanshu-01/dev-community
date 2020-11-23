@@ -141,34 +141,38 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Colors.grey[900] ,
       body: Center(
         child: Container(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image(image: AssetImage('assets/images/logo.png')),
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image(image: AssetImage('assets/images/applogo.png'),height: 60,color: Colors.white,),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 25),
                   child: Container(
-                    child: Text(
-                      'DEV COMMUNITY',
-                      style: GoogleFonts.raleway(
-                          color: Colors.black, fontSize: 30),
-                      maxLines: 1,
+                    child: Image.asset(
+                      'assets/images/appname.png',
+                      height: 25,
+                      color: Colors.white
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 35, 20, 0),
-                  child: SignInButton(
-                    Buttons.Google,
-                    text: "Sign up with Google",
-                    onPressed: () {
-                      GoogleAuthentication().signInWithGoogle();
-                    },
+                  child: Container(
+                    height: 45,
+                    width: 180,
+                    child: SignInButton(
+                      Buttons.Google,
+                      text: "Sign in with Google",
+                      onPressed: () {
+                        GoogleAuthentication().signInWithGoogle();
+                      },
+                    ),
                   ),
                 )
               ]),

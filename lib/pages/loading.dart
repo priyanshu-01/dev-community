@@ -11,11 +11,12 @@ class Loading extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image(
-            image: AssetImage('assets/images/logo.png'),
+            image: AssetImage('assets/images/applogo.png'),
             fit: BoxFit.cover,
+            height: 40,
           ),
           SizedBox(
-            height: 40.0,
+            height: 30.0,
           ),
           SpinKitThreeBounce(
             color: Colors.black,

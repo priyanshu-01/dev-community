@@ -28,4 +28,7 @@ class FirestoreFunctions {
         .doc(userFirebaseDocumentId)
         .update({'bio': bio});
   }
+  deletePost(DocumentSnapshot doc) async {
+    FirebaseFirestore.instance.collection("posts").doc(doc.id).delete();
+  }
 }

@@ -39,7 +39,7 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   @override
   Widget build(BuildContext context) {
     var topBar = new AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       elevation: 2.0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,17 +50,14 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                 width: 40,
                 height: 40,
                 child: Image(
-                  image: AssetImage('assets/images/logo.png'),
+                  image: AssetImage('assets/images/applogo.png'),
+                  color: Colors.white,
                 )),
           ),
           Flexible(
             flex: 10,
             child: Container(
-              child: Text(
-                'DEV COMMUNITY',
-                style: GoogleFonts.raleway(color: Colors.black,fontSize: 15),
-                maxLines: 1,
-              ),
+              child: Image.asset('assets/images/appname.png',height:17,color: Colors.white,)
             ),
           ),
         ],
@@ -82,10 +79,11 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                 new IconButton(
                   icon: Icon(
                     Icons.home,
+                    size: 30,
                   ),
                   color: (currentPage == pages.HomePage)
-                      ? Colors.blue
-                      : Colors.white,
+                      ? Colors.white
+                      : Colors.grey[700],
                   onPressed: () {
                     pageKey.currentState.setState(() {
                       currentPage = pages.HomePage;
@@ -95,10 +93,11 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                 new IconButton(
                   icon: Icon(
                     Icons.add_box,
+                    size: 30,
                   ),
                   color: (currentPage == pages.AddWork)
-                      ? Colors.blue
-                      : Colors.white,
+                      ? Colors.white
+                      : Colors.grey[700],
                   onPressed: () {
                     pageKey.currentState.setState(() {
                       currentPage = pages.AddWork;
@@ -108,10 +107,11 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
                 new IconButton(
                   icon: Icon(
                     Icons.account_box,
+                    size: 30,
                   ),
                   color: (currentPage == pages.Dashboard)
-                      ? Colors.blue
-                      : Colors.white,
+                      ? Colors.white
+                      : Colors.grey[700],
                   onPressed: () {
                     pageKey.currentState.setState(() {
                       currentPage = pages.Dashboard;
