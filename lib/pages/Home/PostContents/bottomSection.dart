@@ -78,7 +78,10 @@ class _BottomSectionState extends State<BottomSection> {
                               Container(
                                 child: Text(
                                   likesCount.toString(),
-                                  style: TextStyle(fontSize: 10.0),
+                                  style: TextStyle(
+                                    fontSize: 10.0,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ],
@@ -91,6 +94,7 @@ class _BottomSectionState extends State<BottomSection> {
               ),
               new Icon(
                 FontAwesomeIcons.infoCircle,
+                color: Colors.green[600],
               )
             ],
           ),
@@ -119,18 +123,68 @@ class NotVerified extends StatelessWidget {
   }
 }
 
-class NotLiked extends StatelessWidget {
+// class NotLiked1 extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(bottom: 6.0),
+//       child: IconButton(
+//         icon: new Icon(FontAwesomeIcons.heart),
+//         color: Colors.pink,
+//         iconSize: 20.0,
+//         onPressed: () {},
+//       ),
+//     );
+//   }
+// }
+
+class NotLiked extends StatefulWidget {
+  @override
+  _NotLikedState createState() => _NotLikedState();
+}
+
+class _NotLikedState extends State<NotLiked> with TickerProviderStateMixin {
+  double iconSize;
+  AnimationController _controller;
+  CurvedAnimation _curvedAnimation;
+  @override
+  void initState() {
+    iconSize = 0.0;
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 400),
+        lowerBound: 0.0,
+        upperBound: 1.0);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _controller.forward();
+    });
+    _curvedAnimation =
+        CurvedAnimation(parent: _controller, curve: Curves.easeOutBack);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 6.0),
-      child: IconButton(
-        icon: new Icon(FontAwesomeIcons.heart),
-        color: Colors.red,
-        iconSize: 20.0,
-        onPressed: () {},
-      ),
+    return AnimatedBuilder(
+      animation: _curvedAnimation,
+      builder: (context, child) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 6.0),
+          child: IconButton(
+            icon: new Icon(FontAwesomeIcons.heart),
+            color: Colors.pink,
+            iconSize: _curvedAnimation.value * 20.0,
+            onPressed: () {},
+          ),
+        );
+      },
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
 
@@ -168,7 +222,7 @@ class _LikedState extends State<Liked> with TickerProviderStateMixin {
           padding: const EdgeInsets.only(bottom: 6.0),
           child: IconButton(
             icon: new Icon(FontAwesomeIcons.solidHeart),
-            color: Colors.red,
+            color: Colors.pink,
             iconSize: _curvedAnimation.value * 20.0,
             onPressed: () {},
           ),
