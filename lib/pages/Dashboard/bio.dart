@@ -21,7 +21,9 @@ class Bio extends StatelessWidget {
                   flex: 2,
                   child: Container(
                     child: Image(
-                      image: AssetImage('assets/images/applogo.png'),height: 60,color: Colors.white,
+                      image: AssetImage('assets/images/applogo.png'),
+                      height: 60,
+                      color: Colors.white,
                     ),
                   )),
               Flexible(flex: 1, child: Container()),
@@ -29,7 +31,9 @@ class Bio extends StatelessWidget {
                 flex: 3,
                 child: Container(
                   child: Image(
-                    image: AssetImage('assets/images/appname.png'),height: 25,color: Colors.white,
+                    image: AssetImage('assets/images/appname.png'),
+                    height: 25,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -44,21 +48,21 @@ class Bio extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                              width: 60.0,
-                              height: 60.0,
-                              decoration: new BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: new DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image:
-                                          NetworkImage(firestore.imageURL,)))
-                        ),
+                            width: 60.0,
+                            height: 60.0,
+                            decoration: new BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: new DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                      firestore.imageURL,
+                                    )))),
                         SizedBox(
                           width: 20.0,
                         ),
                         Text(
                           firestore.name,
-                          style: TextStyle(fontSize: 20.0,color: Colors.white),
+                          style: TextStyle(fontSize: 20.0, color: Colors.white),
                         ),
                         SizedBox(
                           width: 20.0,
@@ -75,17 +79,16 @@ class Bio extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
                   child: Container(
                     child: TextField(
-                      style: TextStyle(color:Colors.white),
+                      style: TextStyle(color: Colors.white),
                       controller: userbio,
-                      decoration: InputDecoration(hintText: 'Add You Bio',hintStyle: TextStyle(color: Colors.grey[500])),
+                      decoration: InputDecoration(
+                          hintText: 'Add Your Bio',
+                          hintStyle: TextStyle(color: Colors.grey[500])),
                     ),
                   ),
                 ),
               ),
-              Flexible(
-                  flex: 2,
-                  child: Container(
-                      )),
+              Flexible(flex: 2, child: Container()),
               Flexible(
                   flex: 2,
                   child: MyNextButton(
