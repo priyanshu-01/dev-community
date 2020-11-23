@@ -39,109 +39,111 @@ class _AddWorkState extends State<AddWork> {
     return Scaffold(
       backgroundColor: Colors.grey[800],
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 25, 0, 10),
-              child: Text('Add New Post',style: TextStyle(
-                color:Colors.white,
-                fontSize:25,
-                fontWeight:FontWeight.w600
-              ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 15),
-              child: TextField(
-                  cursorColor: Colors.white,
-                  controller: _title,
-                  decoration: InputDecoration(
-                    hintText: 'Title',
-                    hintStyle: TextStyle(color: Colors.grey[500]),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white,),
-                    ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey[500],),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.white,fontSize: 17),
-                  ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-              child: Flexible(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 15),
-                  child: TextField(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 25, 0, 10),
+                child: Text('Add New Post',style: TextStyle(
+                  color:Colors.white,
+                  fontSize:25,
+                  fontWeight:FontWeight.w600
+                ),),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 15),
+                child: TextField(
                     cursorColor: Colors.white,
-                    style: TextStyle(color: Colors.white,fontSize: 17),
-                    controller: _description,
+                    controller: _title,
                     decoration: InputDecoration(
-                      hintText: 'Description',
+                      hintText: 'Title',
                       hintStyle: TextStyle(color: Colors.grey[500]),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
+                        borderSide: BorderSide(color: Colors.white,),
                       ),
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey[500]),
+                        borderSide: BorderSide(color: Colors.grey[500],),
+                      ),
+                    ),
+                    style: TextStyle(color: Colors.white,fontSize: 17),
+                    ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: Flexible(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 15),
+                    child: TextField(
+                      cursorColor: Colors.white,
+                      style: TextStyle(color: Colors.white,fontSize: 17),
+                      controller: _description,
+                      decoration: InputDecoration(
+                        hintText: 'Description',
+                        hintStyle: TextStyle(color: Colors.grey[500]),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey[500]),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
-              child: InkWell(
-                child: Card(
-                  color: Colors.grey[600],
-                  child: Container(
-                    height: 250,
-                    width: 250,
-                    child: _image == null
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                FontAwesomeIcons.images,
-                                color: Colors.white,
-                                size: 50.0,
-                              ),
-                              SizedBox(
-                                height: 20.0,
-                              ),
-                              Text('Add Image',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600))
-                            ],
-                          )
-                        : Image.file(_image),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+                child: InkWell(
+                  child: Card(
+                    color: Colors.grey[600],
+                    child: Container(
+                      height: 250,
+                      width: 250,
+                      child: _image == null
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.images,
+                                  color: Colors.white,
+                                  size: 50.0,
+                                ),
+                                SizedBox(
+                                  height: 20.0,
+                                ),
+                                Text('Add Image',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600))
+                              ],
+                            )
+                          : Image.file(_image),
+                    ),
                   ),
+                  onTap: () => getImage(),
                 ),
-                onTap: () => getImage(),
               ),
-            ),
-            Container(
-              height: 40,
-              child: RaisedButton(
-                color: Colors.black,
-                child: Text(
-                  'Post',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w600,fontSize: 15),
+              Container(
+                height: 40,
+                child: RaisedButton(
+                  color: Colors.black,
+                  child: Text(
+                    'Post',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w600,fontSize: 15),
+                  ),
+                  onPressed: () async {
+                    Navigator.push(context, createRoute());
+                    await postImage();
+                    setState(() {});
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () async {
-                  Navigator.push(context, createRoute());
-                  await postImage();
-                  setState(() {});
-                  Navigator.pop(context);
-                },
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
