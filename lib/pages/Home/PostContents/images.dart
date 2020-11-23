@@ -9,12 +9,20 @@ class Images extends StatelessWidget {
     return Card(
       semanticContainer: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0),),
-          child: Image.network(doc.data()['images'],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      child: Image.network(
+        doc.data()['images'],
         // doc.data()['images'],
         fit: BoxFit.fitHeight,
         height: 400,
       ),
+      // child: Image.network(
+      //   doc.data()['images'],
+      //   fit: BoxFit.fitHeight,
+      //   height: 400,
+      // ),
     );
   }
 }
