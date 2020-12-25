@@ -25,16 +25,16 @@ class _BottomSectionState extends State<BottomSection> {
     if (widget.doc.data()['likes'] != null) {
       likesCount =
           commonFunctions.getMapLengthWhereNotNull(widget.doc.data()['likes']);
-      isLiked = true;
-      //  widget.doc.data()['likes'][firestore.uid] == true;
+      isLiked = widget.doc.data()['likes'][myFirestore.uid] == true;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    DateTime ts = widget.doc.data()['timestamp'].toDate();
-    String time = DateFormat.yMMMd().add_jm().format(ts).toString();
-    var d = DateTime.now();
+    // print(widget.doc.data()['timestamp']);
+    // DateTime ts = widget.doc.data()['timestamp'].toDate();
+    // String time = DateFormat.yMMMd().add_jm().format(ts).toString();
+    // var d = DateTime.now();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -69,10 +69,10 @@ class _BottomSectionState extends State<BottomSection> {
                                     setState(() {
                                       isLiked = !isLiked;
                                       if (isLiked) {
-                                        // firestore.likePost(widget.doc);
+                                        myFirestore.likePost(widget.doc);
                                         likesCount = likesCount + 1;
                                       } else {
-                                        // firestore.unlikePost(widget.doc);
+                                        myFirestore.unlikePost(widget.doc);
                                         likesCount = likesCount - 1;
                                       }
                                     });
@@ -99,7 +99,7 @@ class _BottomSectionState extends State<BottomSection> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
-          child: Text(time,
+          child: Text('time',
               style: TextStyle(
                 color: Colors.grey[500],
                 fontSize: 12.0,

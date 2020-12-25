@@ -1,6 +1,6 @@
 import 'package:dsc_projects/commonFunctions.dart';
 import 'package:flutter/material.dart';
-// import 'package:dsc_projects/pages/AddWork/addWork.dart';
+import 'package:dsc_projects/pages/AddWork/addWork.dart';
 // import 'package:dsc_projects/pages/Dashboard/dashboard.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
 // import 'package:dsc_projects/pages/Search/search.dart';
@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'firestore.dart';
 // import 'pages/VisitProfile/visitProfile.dart';
 
-// FirestoreFunctions firestore;
+FirestoreFunctions myFirestore;
 CommonFunctions commonFunctions;
 // var backButtonBar;
 var titleBar;
@@ -19,7 +19,7 @@ enum pages { HomePage, Search, AddWork, Dashboard, VisitProfile }
 var currentPage = pages.HomePage;
 
 Map<dynamic, Widget> getPage = {
-  // pages.AddWork: AddWork(),
+  pages.AddWork: AddWork(),
   // pages.Dashboard: Dashboard(),
   pages.HomePage: HomePage(),
   // pages.Search: Search(),
@@ -35,7 +35,7 @@ class MainPageWithAppBar extends StatefulWidget {
 class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   @override
   void initState() {
-    // firestore = new Firestore();
+    myFirestore = new FirestoreFunctions();
     commonFunctions = new CommonFunctions();
     super.initState();
   }

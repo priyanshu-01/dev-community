@@ -2,7 +2,7 @@ import 'package:dsc_projects/pages/Home/PostContents/images.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-// import 'PostContents/bottomSection.dart';
+import 'PostContents/bottomSection.dart';
 import 'PostContents/topSection.dart';
 
 class Post extends StatefulWidget {
@@ -35,7 +35,8 @@ class _PostState extends State<Post> with AutomaticKeepAliveClientMixin {
             TopSection(
               doc: widget.doc,
             ),
-            (widget.doc.data()['images'] != null)
+            (widget.doc.data()['images'] != null &&
+                    widget.doc.data()['images'] != [])
                 ? Images(
                     doc: widget.doc,
                   )
@@ -43,9 +44,9 @@ class _PostState extends State<Post> with AutomaticKeepAliveClientMixin {
                     height: 0,
                     width: 0,
                   ),
-            // BottomSection(
-            //   doc: widget.doc,
-            // ),
+            BottomSection(
+              doc: widget.doc,
+            ),
           ],
         ),
       ),

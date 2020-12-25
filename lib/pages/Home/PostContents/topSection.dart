@@ -25,22 +25,28 @@ class TopSection extends StatelessWidget {
             },
             child: Row(
               children: <Widget>[
-                new Container(
-                  height: 45.0,
-                  width: 45.0,
-                  decoration: new BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: new DecorationImage(
-                        fit: BoxFit.fill,
-                        image: new NetworkImage(doc.data()['myImageURL'])),
-                  ),
-                ),
+                (doc.data()['myImageURL'] != null)
+                    ? Container(
+                        height: 45.0,
+                        width: 45.0,
+                        decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image:
+                                  new NetworkImage(doc.data()['myImageURL'])),
+                        ),
+                      )
+                    : Container(
+                        height: 45.0,
+                        width: 45.0,
+                      ),
                 // ),),
                 new SizedBox(
                   width: 10.0,
                 ),
                 new Text(
-                  doc.data()['name'],
+                  (doc.data()['name'] != null) ? doc.data()['name'] : "null",
                   style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 18,
