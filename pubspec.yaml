@@ -12,18 +12,19 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   font_awesome_flutter:
-  cloud_firestore: any
-  firebase_core: any
+  # cloud_firestore_web: any
+  # firebase_core: any
   google_fonts: ^0.3.9
-  firebase_auth: ^0.18.0
+  # firebase_auth: ^0.18.0
   auto_size_text: ^2.1.0
-  google_sign_in: ^4.4.3
+  # google_sign_in: ^4.4.3
   image_picker: ^0.6.7+14
-  firebase_storage: any
+  # firebase_storage: any
   flutter_spinkit: ^4.1.2+1
   intl: ^0.16.1
   flutter_signin_button: ^1.1.0
   flutter_launcher_icons: ^0.8.1
+  firebase: any
 
 flutter_icons:
   ios: true

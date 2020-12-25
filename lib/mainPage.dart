@@ -1,15 +1,15 @@
 import 'package:dsc_projects/commonFunctions.dart';
 import 'package:flutter/material.dart';
-import 'package:dsc_projects/pages/AddWork/addWork.dart';
-import 'package:dsc_projects/pages/Dashboard/dashboard.dart';
+// import 'package:dsc_projects/pages/AddWork/addWork.dart';
+// import 'package:dsc_projects/pages/Dashboard/dashboard.dart';
 import 'package:dsc_projects/pages/Home/home.dart';
-import 'package:dsc_projects/pages/Search/search.dart';
+// import 'package:dsc_projects/pages/Search/search.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'firestore.dart';
-import 'pages/VisitProfile/visitProfile.dart';
+// import 'pages/VisitProfile/visitProfile.dart';
 
-FirestoreFunctions firestore;
+// FirestoreFunctions firestore;
 CommonFunctions commonFunctions;
 // var backButtonBar;
 var titleBar;
@@ -19,11 +19,11 @@ enum pages { HomePage, Search, AddWork, Dashboard, VisitProfile }
 var currentPage = pages.HomePage;
 
 Map<dynamic, Widget> getPage = {
-  pages.AddWork: AddWork(),
-  pages.Dashboard: Dashboard(),
+  // pages.AddWork: AddWork(),
+  // pages.Dashboard: Dashboard(),
   pages.HomePage: HomePage(),
-  pages.Search: Search(),
-  pages.VisitProfile: VisitProfile(),
+  // pages.Search: Search(),
+  // pages.VisitProfile: VisitProfile(),
 };
 
 class MainPageWithAppBar extends StatefulWidget {
@@ -75,7 +75,8 @@ class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
 
     return new Scaffold(
         appBar:
-            (currentPage == pages.VisitProfile) ? backButtonBar() : titleBar,
+            // (currentPage == pages.VisitProfile) ? backButtonBar() :
+            titleBar,
         body: getPage[currentPage],
         bottomNavigationBar: new Container(
           color: Colors.black,

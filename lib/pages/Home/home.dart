@@ -1,7 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dsc_projects/pages/Home/post.dart';
 import 'package:dsc_projects/pages/loading.dart';
 import 'package:flutter/material.dart';
+
+import '../../main.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -10,10 +12,13 @@ class HomePage extends StatelessWidget {
       color: Colors.grey[800],
       //  child: Post()
 
-      child: FutureBuilder<QuerySnapshot>(
-        future: FirebaseFirestore.instance
+      child: FutureBuilder(
+        future: store
             .collection('posts')
-            .orderBy('timestamp', descending: true)
+            .orderBy(
+              'timestamp',
+              //  descending: true
+            )
             .get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||

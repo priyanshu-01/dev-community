@@ -1,4 +1,4 @@
-import 'package:dsc_projects/pages/VisitProfile/visitProfile.dart';
+// import 'package:dsc_projects/pages/VisitProfile/visitProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,10 +18,10 @@ class TopSection extends StatelessWidget {
           InkWell(
             splashColor: Colors.transparent,
             onTap: () {
-              pageKey.currentState.setState(() {
-                visitProfileUserId = doc.data()['uid'];
-                currentPage = pages.VisitProfile;
-              });
+              // pageKey.currentState.setState(() {
+              //   visitProfileUserId = doc.data()['uid'];
+              //   currentPage = pages.VisitProfile;
+              // });
             },
             child: Row(
               children: <Widget>[
