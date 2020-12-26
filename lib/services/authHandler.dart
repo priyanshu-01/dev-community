@@ -47,7 +47,7 @@ class AuthHandler extends StatelessWidget {
               email = snapshot.data.email;
               imageUrl = snapshot.data.photoURL;
               uid = snapshot.data.uid;
-              firestore = FirestoreFunctions(
+              myFirestore = FirestoreFunctions(
                   email: email, imageURL: imageUrl, name: name, uid: uid);
               return FetchFutureGoogle();
             }
@@ -141,7 +141,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Colors.grey[900] ,
+      backgroundColor: Colors.grey[900],
       body: Center(
         child: Container(
           child: Column(
@@ -149,16 +149,17 @@ class LoginPage extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Image(image: AssetImage('assets/images/applogo.png'),height: 60,color: Colors.white,),
+                  child: Image(
+                    image: AssetImage('assets/images/applogo.png'),
+                    height: 60,
+                    color: Colors.white,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 15, 0, 25),
                   child: Container(
-                    child: Image.asset(
-                      'assets/images/appname.png',
-                      height: 25,
-                      color: Colors.white
-                    ),
+                    child: Image.asset('assets/images/appname.png',
+                        height: 25, color: Colors.white),
                   ),
                 ),
                 Padding(

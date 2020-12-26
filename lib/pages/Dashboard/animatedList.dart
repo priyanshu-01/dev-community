@@ -118,7 +118,7 @@ class _BuildToBeRemovedItemState extends State<BuildToBeRemovedItem>
                             child: Text('Yes'),
                             onPressed: () {
                               Navigator.pop(context);
-                              firestore.deletePost(
+                              myFirestore.deletePost(
                                   postDocumentSnapshots[widget.index]);
                               listKey.currentState.removeItem(
                                 widget.index,
@@ -189,7 +189,7 @@ class BuildItem extends StatelessWidget {
                             child: Text('Yes'),
                             onPressed: () {
                               Navigator.pop(context);
-                              firestore
+                              myFirestore
                                   .deletePost(postDocumentSnapshots[index]);
                               listKey.currentState.removeItem(
                                 index,

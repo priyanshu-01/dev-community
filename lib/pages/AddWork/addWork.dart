@@ -182,10 +182,10 @@ postImage() async {
     'title': _title.text,
     'description': _description.text,
     'timestamp': Timestamp.now(),
-    'name': firestore.name,
-    'myImageURL': firestore.imageURL,
-    'uid': firestore.uid,
-    'email': firestore.email,
+    'name': myFirestore.name,
+    'myImageURL': myFirestore.imageURL,
+    'uid': myFirestore.uid,
+    'email': myFirestore.email,
     'images': images,
   });
   _title.clear();

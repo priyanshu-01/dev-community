@@ -26,13 +26,13 @@ class UpdateBio extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 40.0,
                   // maxRadius: 75.0,
-                  backgroundImage: NetworkImage(firestore.imageURL),
+                  backgroundImage: NetworkImage(myFirestore.imageURL),
                 ),
               ),
               Flexible(child: Container()),
               Flexible(
                 child: Text(
-                  firestore.name,
+                  myFirestore.name,
                   style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),
               ),
@@ -126,7 +126,7 @@ class _MyNextButtonState extends State<MyNextButton> {
         setState(() {
           _loading = !_loading;
         });
-        await firestore.addBio(widget.userbio.text);
+        await myFirestore.addBio(widget.userbio.text);
         userFirebaseDocumentMap['bio'] = widget.userbio.text;
         myBioKey.currentState.setState(() {});
         Navigator.pop(context);

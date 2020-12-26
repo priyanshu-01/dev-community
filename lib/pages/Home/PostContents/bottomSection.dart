@@ -25,7 +25,7 @@ class _BottomSectionState extends State<BottomSection> {
     if (widget.doc.data()['likes'] != null) {
       likesCount =
           commonFunctions.getMapLengthWhereNotNull(widget.doc.data()['likes']);
-      isLiked = widget.doc.data()['likes'][firestore.uid] == true;
+      isLiked = widget.doc.data()['likes'][myFirestore.uid] == true;
     }
   }
 
@@ -68,10 +68,10 @@ class _BottomSectionState extends State<BottomSection> {
                                     setState(() {
                                       isLiked = !isLiked;
                                       if (isLiked) {
-                                        firestore.likePost(widget.doc);
+                                        myFirestore.likePost(widget.doc);
                                         likesCount = likesCount + 1;
                                       } else {
-                                        firestore.unlikePost(widget.doc);
+                                        myFirestore.unlikePost(widget.doc);
                                         likesCount = likesCount - 1;
                                       }
                                     });
@@ -100,9 +100,9 @@ class _BottomSectionState extends State<BottomSection> {
           padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
           child: Text(time,
               style: TextStyle(
-                  color: Colors.grey[500],
-                  fontSize: 12.0,
-                  )),
+                color: Colors.grey[500],
+                fontSize: 12.0,
+              )),
         )
       ],
     );

@@ -9,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'firestore.dart';
 import 'pages/VisitProfile/visitProfile.dart';
 
-FirestoreFunctions firestore;
+FirestoreFunctions myFirestore;
 CommonFunctions commonFunctions;
 // var backButtonBar;
 var titleBar;
@@ -35,7 +35,7 @@ class MainPageWithAppBar extends StatefulWidget {
 class _MainPageWithAppBarState extends State<MainPageWithAppBar> {
   @override
   void initState() {
-    // firestore = new Firestore();
+    myFirestore = new FirestoreFunctions();
     commonFunctions = new CommonFunctions();
     super.initState();
   }

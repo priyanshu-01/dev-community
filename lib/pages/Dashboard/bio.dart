@@ -55,13 +55,13 @@ class Bio extends StatelessWidget {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: NetworkImage(
-                                      firestore.imageURL,
+                                      myFirestore.imageURL,
                                     )))),
                         SizedBox(
                           width: 20.0,
                         ),
                         Text(
-                          firestore.name,
+                          myFirestore.name,
                           style: TextStyle(fontSize: 20.0, color: Colors.white),
                         ),
                         SizedBox(
@@ -155,7 +155,7 @@ class _MyNextButtonState extends State<MyNextButton> {
         setState(() {
           _loading = !_loading;
         });
-        await firestore.addBio(widget.userbio.text);
+        await myFirestore.addBio(widget.userbio.text);
         userFirebaseDocumentMap['bio'] = widget.userbio.text;
         bioOrMainPageWidgetKey.currentState.setState(() {});
       },

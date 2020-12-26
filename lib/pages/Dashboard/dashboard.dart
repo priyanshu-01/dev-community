@@ -48,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
                               image: new DecorationImage(
                                   fit: BoxFit.fill,
                                   image: NetworkImage(
-                                    firestore.imageURL,
+                                    myFirestore.imageURL,
                                   )))),
                     ),
                     Column(
@@ -60,7 +60,7 @@ class _DashboardState extends State<Dashboard> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                 Container(
-                                  child: Text(firestore.name,
+                                  child: Text(myFirestore.name,
                                       style: TextStyle(
                                         fontSize: 25,
                                         fontWeight: FontWeight.w600,
@@ -217,7 +217,7 @@ class _DashboardState extends State<Dashboard> {
 Future<void> getPosts() async {
   await FirebaseFirestore.instance
       .collection('posts')
-      .where('uid', isEqualTo: firestore.uid)
+      .where('uid', isEqualTo: myFirestore.uid)
       .get()
       .then((value) => {postDocumentSnapshots = value.docs});
 }
